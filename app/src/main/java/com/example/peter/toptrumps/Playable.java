@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public interface Playable {
 
+    String getName();
     Card removeFromHand(Card card);
     Card addToHand(Card card);
     int getNumCards();

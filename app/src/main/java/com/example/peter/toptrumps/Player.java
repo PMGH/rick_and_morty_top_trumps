@@ -23,6 +23,12 @@ public class Player implements Playable {
 
     // getters
 
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
     public int getNumCards(){
         return hand.size();
     }

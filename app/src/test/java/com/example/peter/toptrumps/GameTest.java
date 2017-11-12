@@ -14,7 +14,6 @@ import static org.junit.Assert.assertNotNull;
 public class GameTest {
 
     Game game;
-    Game spyGame;
 
     @Before
     public void before(){
@@ -55,24 +54,6 @@ public class GameTest {
         assertEquals("Player", game.getPlayerTurn().getClass().getSimpleName());
     }
 
-
-    // ancillary functions
-
-//    @Test
-//    public void canGenerateRandom(){
-//        // mockito?
-//    }
-
-//    @Test
-//    public void canSelectCategory(){
-//
-//    }
-
-//    @Test
-//    public void canGetCardCategoryValue(){
-//        // mockito?
-//    }
-
     @Test
     public void pileStartsEmpty(){
         assertEquals(0, game.getPileSize());
@@ -86,13 +67,8 @@ public class GameTest {
     }
 
     @Test
-    public void canSelectCategory(){
-        game.setCategory("Lethality");
-        assertEquals("Lethality", game.getCategory());
-    }
-
-    @Test
     public void gameCanBeWon(){
+        game.start();
         game.play();
         assertEquals(true, game.isGameWon());
     }
