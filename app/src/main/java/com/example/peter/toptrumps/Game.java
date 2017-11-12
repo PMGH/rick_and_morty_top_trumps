@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Game {
 
-//    public static Game INSTANCE = new Game();
+    public static Game INSTANCE = new Game();
 
     private ArrayList<Playable> players;
     private Dealer dealer;
@@ -81,9 +81,9 @@ public class Game {
 
     // other behaviour
 
-//    public static Game getInstance() {
-//        return INSTANCE;
-//    }
+    public static Game getInstance() {
+        return INSTANCE;
+    }
 
     public void start(){
         // start with empty players list
@@ -255,8 +255,7 @@ public class Game {
     }
 
     public void changeTurn(){
-        Collections.rotate(players, 1);
-        playerTurn = players.get(0);
+        playerTurn = roundWinner;
     }
 
 }

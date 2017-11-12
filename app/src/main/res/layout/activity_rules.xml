@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.peter.toptrumps.RulesActivity">
+
+    <TextView
+        android:id="@+id/rules_header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/rules_header_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rules_text"
+        android:layout_width="391dp"
+        android:layout_height="384dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="21dp"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/rules_text"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/play_game_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules_header_text"
+        app:layout_constraintVertical_bias="0.346"
+        tools:layout_editor_absoluteY="90dp"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <Button
+        android:id="@+id/play_game_btn"
+        android:layout_width="127dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:onClick="playGameButtonOnClick"
+        android:text="@string/play_game_btn_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="516dp" />
+</android.support.constraint.ConstraintLayout>
