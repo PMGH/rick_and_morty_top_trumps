@@ -18,4 +18,13 @@
     <string name="how_schwifty_text">How Schwifty: </string>
     <string name="confirm_selection">Confirm Selection</string>
     <string name="player_top_card_title_text">Player\'s Top Card</string>
+    <string name="intellect">Intellect:</string>
+    <string name="lethality">Lethality:</string>
+    <string name="morality">Morality:</string>
+    <string name="how_schwifty">How Schwifty:</string>
+    <string name="cpu_top_card_backplate_black_image">CPU Top Card Backplate Black Image</string>
+    <string name="user_top_card_backplate_black_image">User Top Card Backplate Black Image</string>
+    <string name="cpu_top_card_character_image">CPU Top Card Character Image</string>
+    <string name="user_top_card_character_image">User Top Card Character Image</string>
+    <string name="next_round_btn_text">Next Round</string>
 </resources>

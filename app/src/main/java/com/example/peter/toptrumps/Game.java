@@ -88,6 +88,10 @@ public class Game {
         return roundNumber;
     }
 
+    public Playable getRoundWinner() {
+        return roundWinner;
+    }
+
     public int getPileSize(){
         return pile.size();
     }

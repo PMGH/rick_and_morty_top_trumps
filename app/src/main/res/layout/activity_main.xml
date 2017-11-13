@@ -122,15 +122,18 @@
 
     <Button
         android:id="@+id/play_round_btn"
-        android:layout_width="107dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="47dp"
+        android:layout_width="137dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="48dp"
         android:layout_marginEnd="16dp"
         android:background="@color/colorPrimary"
         android:onClick="playRoundButtonOnClick"
         android:text="@string/play_round"
         android:textColor="@color/colorAccent"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="487dp" />
 </android.support.constraint.ConstraintLayout>

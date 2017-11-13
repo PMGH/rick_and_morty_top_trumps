@@ -64,7 +64,7 @@ public class TopCardActivity extends AppCompatActivity {
         moralityRadioBtn = (RadioButton) findViewById(R.id.morality_radio_btn);
         howSchwiftyRadioBtn = (RadioButton) findViewById(R.id.howSchwifty_radio_btn);
 
-        intellectRadioBtn.setSelected(true);
+        intellectRadioBtn.setChecked(true);
     }
 
     public void confirmSelectionOnClick(View button){
@@ -85,6 +85,7 @@ public class TopCardActivity extends AppCompatActivity {
             default:
                 break;
         }
+
         initializeIntent();
     }
 
