@@ -3,9 +3,7 @@ package com.example.peter.toptrumps;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Scanner;
 
-import static android.R.attr.value;
 
 /**
  * Created by Peter on 10/11/2017.
@@ -26,14 +24,13 @@ public class Game {
     private HashMap<Card, Playable> cardsToBeat;
     private Card currentBestCard;
     private Playable roundWinner;
+    private Integer roundWinnerScore;
     private HashMap<Card, Playable> pile;
     private boolean gameWon;
     private Playable winner;
 
-    private Card cpuTopCard;
     private ArrayList<String> cpuBestCategory;
     private Integer cpuCategoryLowestDelta;
-    private Card userTopCard;
     private Integer roundNumber;
 
 
@@ -46,14 +43,13 @@ public class Game {
         this.cardsToBeat = new HashMap<>();
         this.currentBestCard = new Card(null, null, null, null, null, null, null);
         this.roundWinner = new Player(null);
+        this.roundWinnerScore = 0;
         this.pile = new HashMap<>();
         this.gameWon = false;
         this.winner = new Player(null);
 
-        this.cpuTopCard = new Card(null, null, null, null, null, null, null);
         this.cpuBestCategory = new ArrayList<>();
         this.cpuCategoryLowestDelta = 101;
-        this.userTopCard = new Card(null, null, null, null, null, null, null);
         this.roundNumber = 1;
     }
 
@@ -76,20 +72,16 @@ public class Game {
         return playerTurn;
     }
 
-    public Card getCpuTopCard() {
-        return cpuTopCard;
-    }
-
-    public Card getUserTopCard() {
-        return userTopCard;
-    }
-
     public Integer getRoundNumber() {
         return roundNumber;
     }
 
     public Playable getRoundWinner() {
         return roundWinner;
+    }
+
+    public Integer getRoundWinnerScore() {
+        return roundWinnerScore;
     }
 
     public int getPileSize(){
@@ -108,19 +100,11 @@ public class Game {
         return player1;
     }
 
+
     // setters
 
-    public String setCategory(){
-        if (playerTurn.getClass().getSimpleName().equals("Dealer")){
-            getBestCategory();
-        } else {
-            // user provides category for their round
-            this.category = "Lethality";
-//            System.out.println("Select category!");
-//            Scanner sc = new Scanner(System.in);
-//            this.category = sc.nextLine();
-//            System.out.println("Accepted category input.");
-        }
+    public String playerSetCategory(String category){
+        this.category = category;
         return this.category;
     }
 
@@ -165,12 +149,17 @@ public class Game {
     public void play(){
         // while game is not won
         while (!isGameWon()){
-            playRound();
+            if (playerTurn.equals(player1)){
+                category = playerSetCategory("Intellect");
+            } else {
+                category = getBestCategory();
+            }
+            playRound(category);
         }
         System.out.println(winner.getName() + " won!");
     }
 
-    public void playRound(){
+    public void playRound(String category){
         // increment round number
         roundNumber++;
 
@@ -181,21 +170,16 @@ public class Game {
         currentBestCard = playerTurn.getTopCard();
         cardsToBeat.put(currentBestCard, playerTurn);
 
-        // player picks category from their topmost card - dropdown box/radio button on Android?
-        setCategory();
-
         // set the value to beat - value is displayed / read out (TextValue - and visibility)
-        valueToBeat = getCardCategoryValue(currentBestCard, this.category);
+        valueToBeat = getCardCategoryValue(currentBestCard, category);
 
         // each player's top card is added to pile
         addToPile();
 
-        // display other player cards (one by one if time allows for animation). Highlight equivalent value of that category from their topmost card (TextValue - and visibility), Handler for postDelay
-
         // compareValues() by comparing card category values (weight?)
         compareValues();
 
-        // if round won, add cards to roundWinner's hand from pile
+        // if round won, add cards to roundWinnerName's hand from pile
         if (checkRoundWin()){
             winnerTakePileCards();
         }
@@ -249,11 +233,10 @@ public class Game {
         for (String delta : deltas.keySet()){
             Integer value = deltas.get(delta);
 
-            // Refactor: can be an OR
             if (value < cpuCategoryLowestDelta) {
+                cpuBestCategory.clear();
                 cpuCategoryLowestDelta = value;
                 cpuBestCategory.add(delta);
-
             } else if (value.equals(cpuCategoryLowestDelta)){
                 cpuBestCategory.add(delta);
             }
@@ -289,8 +272,9 @@ public class Game {
         if (cardsToBeat.size() == 1){
             for (Card card : cardsToBeat.keySet()){
                 roundWinner = cardsToBeat.get(card);
-            } return true;
-        } return false;
+                roundWinnerScore = getCardCategoryValue(card, category);
+            }
+        } return true;
     }
 
     public void winnerTakePileCards(){

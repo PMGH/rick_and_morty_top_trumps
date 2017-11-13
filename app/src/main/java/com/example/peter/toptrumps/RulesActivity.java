@@ -15,7 +15,6 @@ public class RulesActivity extends AppCompatActivity {
 
     EditText name_text;
     String name;
-    DBHelper dbHelper;
     Game game;
 
     @Override
@@ -46,16 +45,9 @@ public class RulesActivity extends AppCompatActivity {
     }
 
     public void initializeIntent(){
-        // create user entry in DB
-        dbHelper = new DBHelper(this);
-        dbHelper.deleteAll();
-        int id = dbHelper.save(name, 0);
-        Log.d("Rules Activity", "Saved to DB");
-        Integer id_integer = Integer.valueOf(id);
-        Log.d("Rules Activity", "Integer returned from DB");
-
+        game = Game.getInstance();
+        game.start(name);
         Intent mainActivityIntent = new Intent(RulesActivity.this, MainActivity.class);
-        mainActivityIntent.putExtra("id", id_integer);
         startActivity(mainActivityIntent);
     }
 

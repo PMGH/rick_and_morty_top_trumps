@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.example.peter.toptrumps.R.id.round_category_text;
-import static com.example.peter.toptrumps.R.id.round_win_declaration_text;
-
 public class ResultActivity extends AppCompatActivity {
 
     TextView roundResultText;
@@ -38,24 +35,36 @@ public class ResultActivity extends AppCompatActivity {
     Card cpuCard;
     Game game;
     String category;
-    String roundWinner;
-    String roundWinnerScore;
+    String roundWinnerName;
+    Integer roundWinnerScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        category = extras.getString("category");
+        Intent resultActivityIntent = getIntent();
+
+        Log.d("Result Activity", "On Result Activity");
+        if (resultActivityIntent.hasExtra("category")){
+            Log.d("Result Activity", "Inside if");
+            Bundle extras = resultActivityIntent.getExtras();
+            String roundCategory = extras.getString("category");
+
+            game = Game.getInstance();
+            category = game.playerSetCategory(roundCategory);
+            Log.d("Result Activity", "Player round played successfully");
+        } else {
+            Log.d("Result Activity", "Inside else");
+            game = Game.getInstance();
+            category = game.getBestCategory();
+            Log.d("Result Activity", "CPU round played successfully");
+        }
 
         game = Game.getInstance();
 
         userCard = game.getPlayer1().getTopCard();
         cpuCard = game.getDealer().getTopCard();
-        roundWinner = game.getRoundWinner().getName();
-
 
         roundResultText = (TextView) findViewById(R.id.round_result_title_text);
         String roundResultTextStr = "Round " + game.getRoundNumber() + " Result";
@@ -93,23 +102,38 @@ public class ResultActivity extends AppCompatActivity {
         userHowSchwiftyText = (TextView) findViewById(R.id.user_top_card_howSchwifty_value_text);
         userHowSchwiftyText.setText(game.getPlayer1().getTopCard().getHowSchwifty().toString());
 
+        game.playRound(category);
+        roundWinnerName = game.getRoundWinner().getName();
+        roundWinnerScore = game.getRoundWinnerScore();
+
         // win declaration
         roundCategoryText = (TextView) findViewById(R.id.round_category_text);
         String roundCategoryTextStr = "Category:  " + category;
         roundCategoryText.setText(roundCategoryTextStr);
 
         roundWinDeclarationText = (TextView) findViewById(R.id.round_win_declaration_text);
-//        if (roundWinner.equals(game.getDealer().getName())){
-//            roundWinDeclarationText.setTextColor(Color.parseColor("#ffcc0000"));
-//        } else {
-//            roundWinDeclarationText.setTextColor(Color.parseColor("#ff669900"));
-//        }
-//        String roundWinDeclarationTextStr = roundWinner + " won with a score of " + roundWinnerScore + ".";
-//        roundWinDeclarationText.setText(roundWinDeclarationTextStr);
+        if (roundWinnerName.equals(game.getDealer().getName())){
+            roundWinDeclarationText.setTextColor(Color.parseColor("#ffcc0000"));
+        } else {
+            roundWinDeclarationText.setTextColor(Color.parseColor("#ff669900"));
+        }
+        String roundWinDeclarationTextStr = roundWinnerName + " won with a score of " + roundWinnerScore.toString() + ".";
+        roundWinDeclarationText.setText(roundWinDeclarationTextStr);
     }
 
     public void nextRoundButtonOnClick(View button){
-        Intent intent = new Intent(ResultActivity.this, MainActivity.class);
-        startActivity(intent);
+        Log.d("Result Activity", "Next Round button clicked");
+        if (!game.isGameWon()){
+            Log.d("Result Activity", "Inside if statement");
+            Intent mainActivityIntent = new Intent(ResultActivity.this, MainActivity.class);
+            Log.d("Result Activity", "Main Activity Intent created");
+            startActivity(mainActivityIntent);
+        } else {
+            Log.d("Result Activity", "Inside else statement");
+            Intent gameWonIntent = new Intent(ResultActivity.this, GameWonActivity.class);
+            Log.d("Result Activity", "Game Won Activity Intent created");
+            startActivity(gameWonIntent);
+        }
+
     }
 }

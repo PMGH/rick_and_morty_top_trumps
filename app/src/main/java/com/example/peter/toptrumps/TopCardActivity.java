@@ -31,7 +31,6 @@ public class TopCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_card);
 
-        Log.d("TopCard Activity", "On TopCard Activity");
         game = Game.getInstance();
 
         Card userCard = game.getPlayer1().getTopCard();
@@ -85,15 +84,16 @@ public class TopCardActivity extends AppCompatActivity {
             default:
                 break;
         }
-
         initializeIntent();
     }
 
     public void initializeIntent(){
-        Intent intent = new Intent(TopCardActivity.this, ResultActivity.class);
+        Intent resultActivityIntent = new Intent(TopCardActivity.this, ResultActivity.class);
 
-        intent.putExtra("category", category);
+        resultActivityIntent.putExtra("category", category);
 
-        startActivity(intent);
+        startActivity(resultActivityIntent);
     }
+
+
 }
