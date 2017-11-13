@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-//        userName = extras.getString("userName");
         id = extras.getInt("id");
 
         game = Game.getInstance();
@@ -75,17 +74,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playRoundButtonOnClick(View button){
-        Log.d("Main Activity", "Play round button clicked");
         if ((game.getPlayerTurn().getName()).equals(userName)){
-            Log.d("Main Activity", "About to initialize intent");
             initializeIntent();
         }
-        Log.d("Main Activity", "Passed the if statement bro");
     }
 
     public void initializeIntent(){
         Intent intent = new Intent(MainActivity.this, TopCardActivity.class);
-        Log.d("Main Activity", "Intent created");
         startActivity(intent);
     }
 }

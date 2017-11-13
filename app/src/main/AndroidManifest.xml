@@ -20,7 +20,8 @@
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".RulesActivity" />
-        <activity android:name=".TopCardActivity"></activity>
+        <activity android:name=".TopCardActivity" />
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>
