@@ -1,9 +1,11 @@
 package com.example.peter.toptrumps;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
+
+import static android.R.attr.value;
 
 /**
  * Created by Peter on 10/11/2017.
@@ -15,8 +17,9 @@ public class Game {
 
     private ArrayList<Playable> players;
     private Dealer dealer;
+    private Player player1;
     private Deck deck;
-    private int totalNumCards;
+    private int totalNumCards; // for testing
     private Playable playerTurn;
     private String category;
     private Integer valueToBeat;
@@ -27,14 +30,18 @@ public class Game {
     private boolean gameWon;
     private Playable winner;
 
-    //testing
-    private ArrayList<String> categories;
+    private Card cpuTopCard;
+    private ArrayList<String> cpuBestCategory;
+    private Integer cpuCategoryLowestDelta;
+    private Card userTopCard;
+    private Integer roundNumber;
+
 
     public Game() {
         this.players = new ArrayList<>();
         this.totalNumCards = 0;
         this.playerTurn = new Player(null);
-        this.category = "Intellect";
+        this.category = "";
         this.valueToBeat = 0;
         this.cardsToBeat = new HashMap<>();
         this.currentBestCard = new Card(null, null, null, null, null, null, null);
@@ -43,12 +50,11 @@ public class Game {
         this.gameWon = false;
         this.winner = new Player(null);
 
-        // testing categories
-        this.categories = new ArrayList<>();
-        this.categories.add("Intellect");
-        this.categories.add("Lethality");
-        this.categories.add("Morality");
-        this.categories.add("How Schwifty");
+        this.cpuTopCard = new Card(null, null, null, null, null, null, null);
+        this.cpuBestCategory = new ArrayList<>();
+        this.cpuCategoryLowestDelta = 101;
+        this.userTopCard = new Card(null, null, null, null, null, null, null);
+        this.roundNumber = 1;
     }
 
 
@@ -70,6 +76,18 @@ public class Game {
         return playerTurn;
     }
 
+    public Card getCpuTopCard() {
+        return cpuTopCard;
+    }
+
+    public Card getUserTopCard() {
+        return userTopCard;
+    }
+
+    public Integer getRoundNumber() {
+        return roundNumber;
+    }
+
     public int getPileSize(){
         return pile.size();
     }
@@ -78,15 +96,39 @@ public class Game {
         return gameWon;
     }
 
+    public Dealer getDealer() {
+        return dealer;
+    }
 
-    // other behaviour
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    // setters
+
+    public String setCategory(){
+        if (playerTurn.getClass().getSimpleName().equals("Dealer")){
+            getBestCategory();
+        } else {
+            // user provides category for their round
+            this.category = "Lethality";
+//            System.out.println("Select category!");
+//            Scanner sc = new Scanner(System.in);
+//            this.category = sc.nextLine();
+//            System.out.println("Accepted category input.");
+        }
+        return this.category;
+    }
+
+
+    // game behaviour
 
     public static Game getInstance() {
         return INSTANCE;
     }
 
-    public void start(){
-        // start with empty players list
+    public void start(String playerName){
+        // clear players array each time a new game is started
         players.clear();
 
         // setup CPU dealer
@@ -96,15 +138,11 @@ public class Game {
 
         // set total number of cards within the game
         this.deck = dealer.getDeck();
-        totalNumCards = deck.getNumCards();  // for testing purposes
+        totalNumCards = deck.getNumCards();
 
-        // get player name and create Player instance (at least 2 players incl. CPU needed)
-        // ANDROID UI
-        // add test players
-        Player player1 = new Player("Peter");
-        Player player2 = new Player("Alan");
+        // add new player - Android UI, name provided is used to create new Player instance and added to players
+        player1 = new Player(playerName);
         players.add(player1);
-        players.add(player2);
 
         // set first turn to left of dealer
         this.playerTurn = players.get(1);
@@ -120,58 +158,66 @@ public class Game {
         }
     }
 
-
     public void play(){
         // while game is not won
         while (!isGameWon()){
-            // refresh cardsToBeat and pile HashMaps
-            cardsToBeat.clear();
-            pile.clear();
-
-            // player who's turn it is plays their top card
-            // get top card and set it to be the card to beat
-            currentBestCard = playerTurn.getTopCard();
-            cardsToBeat.put(currentBestCard, playerTurn);
-
-            // player picks category from their topmost card - dropdown box on Android?
-            category = categories.get(generateRandom(categories.size()));
-
-            // set the value to beat - value is displayed / read out (TextValue - and visibility)
-            valueToBeat = getCardCategoryValue(currentBestCard, category);
-
-            // each player's top card is added to pile
-            addToPile();
-
-            // display other player cards (one by one if time allows for animation). Highlight equivalent value of that category from their topmost card (TextValue - and visibility), Handler for postDelay
-
-            // compareValues() by comparing card category values (weight?)
-            compareValues();
-
-            // if round won, add cards to roundWinner's hand from pile
-            if (checkRoundWin()){
-                winnerTakePileCards();
+            playRound();
             }
-
-            // checkEliminated()
-            checkEliminated();
-
-            // checkWin()
-            checkWin();
-
-            // next Turn
-            if (players.size() > 1){
-                changeTurn();
-            }
-        }
         System.out.println(winner.getName() + " won!");
     }
+
+    public void playRound(){
+        // increment round number
+        roundNumber++;
+
+        // clear cardsToBeat HashMap
+        cardsToBeat.clear();
+
+        // get playerTurn topCard and set it to be the cardToBeat
+        currentBestCard = playerTurn.getTopCard();
+        cardsToBeat.put(currentBestCard, playerTurn);
+
+        // player picks category from their topmost card - dropdown box/radio button on Android?
+        setCategory();
+
+        // set the value to beat - value is displayed / read out (TextValue - and visibility)
+        valueToBeat = getCardCategoryValue(currentBestCard, this.category);
+
+        // each player's top card is added to pile
+        addToPile();
+
+        // display other player cards (one by one if time allows for animation). Highlight equivalent value of that category from their topmost card (TextValue - and visibility), Handler for postDelay
+
+        // compareValues() by comparing card category values (weight?)
+        compareValues();
+
+        // if round won, add cards to roundWinner's hand from pile
+        if (checkRoundWin()){
+            winnerTakePileCards();
+        }
+        // checkWin()
+        checkWin();
+
+        // checkEliminated()
+        checkEliminated();
+
+
+
+        // next Turn
+        if (players.size() > 1) {
+            changeTurn();
+        }
+    }
+
+
+    // ancillary functions
 
     public int generateRandom(int limit){
         Random rand = new Random();
         return rand.nextInt(limit);
     }
 
-    public Integer getCardCategoryValue(Card topCard, String category){
+    public int getCardCategoryValue(Card topCard, String category){
         switch (category) {
             case "Intellect":
                 return topCard.getIntellect();
@@ -186,6 +232,30 @@ public class Game {
         }
     }
 
+    public String getBestCategory(){
+        Card card = dealer.getTopCard(); // change this to if statement to check if player is a bot
+        cpuBestCategory.clear();
+        cpuCategoryLowestDelta = 101;
+
+        HashMap<String, Integer> deltas = new HashMap<>();
+        deltas.put("Intellect", 100 - card.getIntellect());
+        deltas.put("Lethality", 100 - card.getLethality());
+        deltas.put("Morality", 100 - card.getMorality());
+        deltas.put("How Schwifty", (10 - card.getHowSchwifty()) * 10);
+
+        for (String delta : deltas.keySet()){
+            Integer value = deltas.get(delta);
+
+            if (value < cpuCategoryLowestDelta) {
+                cpuCategoryLowestDelta = value;
+                cpuBestCategory.add(delta);
+
+            } else if (value.equals(cpuCategoryLowestDelta)){
+                cpuBestCategory.add(delta);
+            }
+        } return cpuBestCategory.get(generateRandom(cpuBestCategory.size()));
+    }
+
     public void addToPile(){
         for (Playable player : players){
             Card playerCard = player.removeFromHand(player.getTopCard());
@@ -197,7 +267,6 @@ public class Game {
         // HashMap<>() cardsToBeat - if card value is more than highest value then added to HashMap and previous highest removed, if equal it is added and there is a draw scenario, else move to next card
         for (Card card : pile.keySet()){
             if (card != currentBestCard){
-
                 Integer nextCardValue = getCardCategoryValue(card, category);
 
                 if (nextCardValue > valueToBeat){
@@ -216,17 +285,14 @@ public class Game {
         if (cardsToBeat.size() == 1){
             for (Card card : cardsToBeat.keySet()){
                 roundWinner = cardsToBeat.get(card);
-            }
-            return true;
-        }
-        return false;
+            } return true;
+        } return false;
     }
 
     public void winnerTakePileCards(){
         for (Card card : pile.keySet()){
             roundWinner.addToHand(card);
         }
-        // clear() used out of loop as remove() might remove all instances of card (multiple of same card in deck - extensible)
         pile.clear();
     }
 
@@ -238,8 +304,7 @@ public class Game {
             if (player.getNumCards() == 0){
                 toRemove.add(player);
             }
-        }
-        players.removeAll(toRemove);
+        } players.removeAll(toRemove);
     }
 
     public void checkWin(){
@@ -250,8 +315,6 @@ public class Game {
             winner = winningPlayer;
             winningPlayer.addWin();
         }
-
-        // some variants of the rules allow 'three card pick', whereby a player who has only three deckCards remaining is allowed to choose any of their three deckCards to play with. Typically, this lengthens the game considerably.
     }
 
     public void changeTurn(){

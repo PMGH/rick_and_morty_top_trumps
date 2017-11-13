@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Player implements Playable {
 
+    private int id;
+
     private String name;
     private ArrayList<Card> hand;
     // numWins for leader board
@@ -15,14 +17,25 @@ public class Player implements Playable {
 
     public Player(String name) {
         this.name = name;
-        // numWins for leader board
         this.numWins = 0;
+        this.hand = new ArrayList<>();
+        // this.human = true // human or bot - true or false
+    }
+
+    // DB constructor overload
+    public Player(int id, String name, Integer numWins) {
+        this.id = id;
+        this.name = name;
+        this.numWins = numWins;
         this.hand = new ArrayList<>();
     }
 
 
     // getters
 
+    public int getId() {
+        return id;
+    }
 
     @Override
     public String getName() {
@@ -40,6 +53,9 @@ public class Player implements Playable {
         return null;
     }
 
+    public Integer getNumWins() {
+        return numWins;
+    }
 
     // setter
 
