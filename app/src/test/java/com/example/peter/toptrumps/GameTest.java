@@ -1,8 +1,11 @@
 package com.example.peter.toptrumps;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -22,6 +25,13 @@ public class GameTest {
         spyGame = Mockito.spy(game);
     }
 
+    @After
+    public void tearDown() throws Exception {
+        // reflection - accessing a private method and setting it to accessible then resetting game instance to a new game
+        Field field = Game.class.getDeclaredField("INSTANCE");
+        field.setAccessible(true);
+        field.set(game, new Game());
+    }
 
     @Test
     public void startsWithTwoPlayers(){

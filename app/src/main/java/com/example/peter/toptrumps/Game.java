@@ -13,7 +13,7 @@ import static android.R.attr.value;
 
 public class Game {
 
-    public static Game INSTANCE = new Game();
+    private static Game INSTANCE = new Game();
 
     private ArrayList<Playable> players;
     private Dealer dealer;
@@ -162,7 +162,7 @@ public class Game {
         // while game is not won
         while (!isGameWon()){
             playRound();
-            }
+        }
         System.out.println(winner.getName() + " won!");
     }
 
@@ -195,13 +195,12 @@ public class Game {
         if (checkRoundWin()){
             winnerTakePileCards();
         }
-        // checkWin()
-        checkWin();
 
         // checkEliminated()
         checkEliminated();
 
-
+        // checkWin()
+        checkWin();
 
         // next Turn
         if (players.size() > 1) {
@@ -246,6 +245,7 @@ public class Game {
         for (String delta : deltas.keySet()){
             Integer value = deltas.get(delta);
 
+            // Refactor: can be an OR
             if (value < cpuCategoryLowestDelta) {
                 cpuCategoryLowestDelta = value;
                 cpuBestCategory.add(delta);

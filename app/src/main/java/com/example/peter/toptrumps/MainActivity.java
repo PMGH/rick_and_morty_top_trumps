@@ -3,6 +3,8 @@ package com.example.peter.toptrumps;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String userName;
     int id;
     DBHelper dbHelper;
+    Game game;
 
 
     @Override
@@ -29,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
 //        userName = extras.getString("userName");
         id = extras.getInt("id");
 
-        Game game = Game.getInstance();
+        game = Game.getInstance();
+
+        dbHelper = new DBHelper(this);
+        Playable player = dbHelper.getPlayerById(id);
+        userName = player.getName();
+
         game.start(userName);
 
         // round number
@@ -37,24 +45,9 @@ public class MainActivity extends AppCompatActivity {
         String round = "Round: " + game.getRoundNumber().toString();
         roundNumberText.setText(round);
 
-        // CPU
-        cpuNameText = (TextView) findViewById(R.id.CPU_user_name_text);
-        cpuNameText.setText(game.getDealer().getName());
-//
-        cpuWinsText = (TextView) findViewById(R.id.CPU_user_wins_text);
-        String cpuWins = "Game Wins: " + game.getDealer().getNumWins().toString();
-        cpuWinsText.setText(cpuWins);
-
-        cpuNumCardsText = (TextView) findViewById(R.id.CPU_user_num_cards_text);
-        Integer cpuNumCards = Integer.valueOf(game.getDealer().getNumCards());
-        String cpuNumCardsStr = "Number of Cards: " + cpuNumCards.toString();
-        cpuNumCardsText.setText(cpuNumCardsStr);
-
         // user
-        dbHelper = new DBHelper(this);
-        Playable player = dbHelper.getPlayerById(id);
         userNameText = (TextView) findViewById(R.id.user_name_text);
-        userNameText.setText(player.getName());
+        userNameText.setText(userName);
 
         userWinsText = (TextView) findViewById(R.id.user_wins_text);
         String userWins = "Game Wins: " + player.getNumWins().toString();
@@ -66,18 +59,33 @@ public class MainActivity extends AppCompatActivity {
         String userNumCardsStr = "Number of Cards: " + userNumCards.toString();
         userNumCardsText.setText(userNumCardsStr);
 
+
+        // CPU
+        cpuNameText = (TextView) findViewById(R.id.CPU_user_name_text);
+        cpuNameText.setText(game.getDealer().getName());
+
+        cpuWinsText = (TextView) findViewById(R.id.CPU_user_wins_text);
+        String cpuWins = "Game Wins: " + game.getDealer().getNumWins().toString();
+        cpuWinsText.setText(cpuWins);
+
+        cpuNumCardsText = (TextView) findViewById(R.id.CPU_user_num_cards_text);
+        Integer cpuNumCards = Integer.valueOf(game.getDealer().getNumCards());
+        String cpuNumCardsStr = "Number of Cards: " + cpuNumCards.toString();
+        cpuNumCardsText.setText(cpuNumCardsStr);
     }
 
-    public void playRoundButtonOnClick(){
-        Game game = Game.getInstance();
-//
-        if (game.getPlayerTurn().getName().equals(userName)){
+    public void playRoundButtonOnClick(View button){
+        Log.d("Main Activity", "Play round button clicked");
+        if ((game.getPlayerTurn().getName()).equals(userName)){
+            Log.d("Main Activity", "About to initialize intent");
             initializeIntent();
         }
+        Log.d("Main Activity", "Passed the if statement bro");
     }
 
     public void initializeIntent(){
         Intent intent = new Intent(MainActivity.this, TopCardActivity.class);
+        Log.d("Main Activity", "Intent created");
         startActivity(intent);
     }
 }

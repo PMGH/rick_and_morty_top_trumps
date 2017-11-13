@@ -12,4 +12,10 @@
     <string name="user_image_content_description">User image</string>
     <string name="card_pile_image">Card pile image</string>
     <string name="character_image">Character Image</string>
+    <string name="intellect_text">Intellect: </string>
+    <string name="lethality_text">Lethality: </string>
+    <string name="morality_text">Morality: </string>
+    <string name="how_schwifty_text">How Schwifty: </string>
+    <string name="confirm_selection">Confirm Selection</string>
+    <string name="player_top_card_title_text">Player\'s Top Card</string>
 </resources>

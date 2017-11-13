@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class RulesActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class RulesActivity extends AppCompatActivity {
     EditText name_text;
     String name;
     DBHelper dbHelper;
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,16 @@ public class RulesActivity extends AppCompatActivity {
         name_text = (EditText) findViewById(R.id.user_name_text);
     }
 
-    public void playGameButtonOnClick(View button){
+    public void playGameButtonOnClick(View button) {
+        game = Game.getInstance();
+
+        // empty game
+        try {
+            tearDown();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         name = name_text.getText().toString();
 
         if (!name.equals("")){
@@ -46,5 +57,12 @@ public class RulesActivity extends AppCompatActivity {
         Intent mainActivityIntent = new Intent(RulesActivity.this, MainActivity.class);
         mainActivityIntent.putExtra("id", id_integer);
         startActivity(mainActivityIntent);
+    }
+
+    public void tearDown() throws Exception {
+        // reflection - accessing a private method and setting it to accessible then resetting game instance to a new game
+        Field field = Game.class.getDeclaredField("INSTANCE");
+        field.setAccessible(true);
+        field.set(game, new Game());
     }
 }
