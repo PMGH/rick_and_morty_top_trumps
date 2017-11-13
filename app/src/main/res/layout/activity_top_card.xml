@@ -152,6 +152,7 @@
         android:onClick="confirmSelectionOnClick"
         android:text="@string/confirm_selection"
         android:textColor="@color/colorAccent"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

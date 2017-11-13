@@ -27,4 +27,6 @@
     <string name="cpu_top_card_character_image">CPU Top Card Character Image</string>
     <string name="user_top_card_character_image">User Top Card Character Image</string>
     <string name="next_round_btn_text">Next Round</string>
+    <string name="play_again_btn_text">Play Again ?</string>
+    <string name="game_over_text">GAME OVER</string>
 </resources>

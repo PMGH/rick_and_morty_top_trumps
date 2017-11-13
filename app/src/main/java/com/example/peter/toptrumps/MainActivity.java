@@ -1,11 +1,13 @@
 package com.example.peter.toptrumps;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         String roundStr = "Round: " + game.getRoundNumber().toString();
         roundNumberText.setText(roundStr);
 
+        // set gif/videoView
+        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+//        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable));
 
         // user
         userNameText = (TextView) findViewById(R.id.user_name_text);

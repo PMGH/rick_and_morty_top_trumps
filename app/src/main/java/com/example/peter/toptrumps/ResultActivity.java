@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class ResultActivity extends AppCompatActivity {
     TextView cpuLethalityText;
     TextView cpuMoralityText;
     TextView cpuHowSchwiftyText;
+    ImageView cpuBackplate;
 
     TextView userNameText;
     TextView userTopCardName;
@@ -30,6 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     TextView userLethalityText;
     TextView userMoralityText;
     TextView userHowSchwiftyText;
+    ImageView userBackplate;
 
     Card userCard;
     Card cpuCard;
@@ -37,6 +40,7 @@ public class ResultActivity extends AppCompatActivity {
     String category;
     String roundWinnerName;
     Integer roundWinnerScore;
+    Card roundWinningCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +49,14 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent resultActivityIntent = getIntent();
 
-        Log.d("Result Activity", "On Result Activity");
         if (resultActivityIntent.hasExtra("category")){
-            Log.d("Result Activity", "Inside if");
             Bundle extras = resultActivityIntent.getExtras();
             String roundCategory = extras.getString("category");
-
             game = Game.getInstance();
             category = game.playerSetCategory(roundCategory);
-            Log.d("Result Activity", "Player round played successfully");
         } else {
-            Log.d("Result Activity", "Inside else");
             game = Game.getInstance();
             category = game.getBestCategory();
-            Log.d("Result Activity", "CPU round played successfully");
         }
 
         game = Game.getInstance();
@@ -66,6 +64,7 @@ public class ResultActivity extends AppCompatActivity {
         userCard = game.getPlayer1().getTopCard();
         cpuCard = game.getDealer().getTopCard();
 
+        // page title text
         roundResultText = (TextView) findViewById(R.id.round_result_title_text);
         String roundResultTextStr = "Round " + game.getRoundNumber() + " Result";
         roundResultText.setText(roundResultTextStr);
@@ -73,6 +72,7 @@ public class ResultActivity extends AppCompatActivity {
         // cpu
         cpuNameText = (TextView) findViewById(R.id.cpu_name_text);
         cpuNameText.setText(game.getDealer().getName());
+        cpuBackplate = (ImageView) findViewById(R.id.cpu_top_card_backplate);
         cpuTopCardName = (TextView) findViewById(R.id.cpu_top_card_name_text);
         cpuTopCardName.setText(game.getDealer().getTopCard().getName());
         cpuTopCardImage = (ImageView) findViewById(R.id.cpu_top_card_character_image);
@@ -89,6 +89,7 @@ public class ResultActivity extends AppCompatActivity {
         // user
         userNameText = (TextView) findViewById(R.id.user_name_text);
         userNameText.setText(game.getPlayer1().getName());
+        userBackplate = (ImageView) findViewById(R.id.user_top_card_backplate);
         userTopCardName = (TextView) findViewById(R.id.user_top_card_name_text);
         userTopCardName.setText(game.getPlayer1().getTopCard().getName());
         userTopCardImage = (ImageView) findViewById(R.id.user_top_card_character_image);
@@ -102,38 +103,60 @@ public class ResultActivity extends AppCompatActivity {
         userHowSchwiftyText = (TextView) findViewById(R.id.user_top_card_howSchwifty_value_text);
         userHowSchwiftyText.setText(game.getPlayer1().getTopCard().getHowSchwifty().toString());
 
+        // play round and get winner details
         game.playRound(category);
         roundWinnerName = game.getRoundWinner().getName();
-        roundWinnerScore = game.getRoundWinnerScore();
+        roundWinningCard = game.getRoundWinningCard();
+        roundWinnerScore = game.getRoundWinningScore();
 
-        // win declaration
+        // round category
         roundCategoryText = (TextView) findViewById(R.id.round_category_text);
         String roundCategoryTextStr = "Category:  " + category;
         roundCategoryText.setText(roundCategoryTextStr);
 
+        // win declaration
         roundWinDeclarationText = (TextView) findViewById(R.id.round_win_declaration_text);
-        if (roundWinnerName.equals(game.getDealer().getName())){
-            roundWinDeclarationText.setTextColor(Color.parseColor("#ffcc0000"));
-        } else {
-            roundWinDeclarationText.setTextColor(Color.parseColor("#ff669900"));
-        }
         String roundWinDeclarationTextStr = roundWinnerName + " won with a score of " + roundWinnerScore.toString() + ".";
         roundWinDeclarationText.setText(roundWinDeclarationTextStr);
+
+        // set colours
+        setColours();
+
+        // toast catchphrase
+        Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_SHORT).show();
     }
 
     public void nextRoundButtonOnClick(View button){
-        Log.d("Result Activity", "Next Round button clicked");
         if (!game.isGameWon()){
-            Log.d("Result Activity", "Inside if statement");
             Intent mainActivityIntent = new Intent(ResultActivity.this, MainActivity.class);
-            Log.d("Result Activity", "Main Activity Intent created");
             startActivity(mainActivityIntent);
         } else {
-            Log.d("Result Activity", "Inside else statement");
             Intent gameWonIntent = new Intent(ResultActivity.this, GameWonActivity.class);
-            Log.d("Result Activity", "Game Won Activity Intent created");
             startActivity(gameWonIntent);
         }
-
     }
+
+    public void setColours(){
+        if (roundWinnerName.equals(game.getDealer().getName())){
+            cpuTopCardName.setTextColor(Color.parseColor("#ff669900"));
+            cpuNameText.setTextColor(Color.parseColor("#ff669900"));
+            cpuBackplate.setBackgroundColor(Color.parseColor("#ff669900"));
+        } else {
+            cpuTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
+            cpuNameText.setTextColor(Color.parseColor("#ffcc0000"));
+            cpuBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
+        }
+
+        if (roundWinnerName.equals(game.getPlayer1().getName())){
+            userTopCardName.setTextColor(Color.parseColor("#ff669900"));
+            userNameText.setTextColor(Color.parseColor("#ff669900"));
+            userBackplate.setBackgroundColor(Color.parseColor("#ff669900"));
+        } else {
+            userTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
+            userNameText.setTextColor(Color.parseColor("#ffcc0000"));
+            userBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
+
+        }
+    }
+
 }

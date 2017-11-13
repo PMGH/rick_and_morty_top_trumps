@@ -24,7 +24,8 @@ public class Game {
     private HashMap<Card, Playable> cardsToBeat;
     private Card currentBestCard;
     private Playable roundWinner;
-    private Integer roundWinnerScore;
+    private Card roundWinningCard;
+    private Integer roundWinningScore;
     private HashMap<Card, Playable> pile;
     private boolean gameWon;
     private Playable winner;
@@ -43,7 +44,8 @@ public class Game {
         this.cardsToBeat = new HashMap<>();
         this.currentBestCard = new Card(null, null, null, null, null, null, null);
         this.roundWinner = new Player(null);
-        this.roundWinnerScore = 0;
+        this.roundWinningCard = new Card(null, null, null, null, null, null, null);
+        this.roundWinningScore = 0;
         this.pile = new HashMap<>();
         this.gameWon = false;
         this.winner = new Player(null);
@@ -80,8 +82,12 @@ public class Game {
         return roundWinner;
     }
 
-    public Integer getRoundWinnerScore() {
-        return roundWinnerScore;
+    public Card getRoundWinningCard() {
+        return roundWinningCard;
+    }
+
+    public Integer getRoundWinningScore() {
+        return roundWinningScore;
     }
 
     public int getPileSize(){
@@ -100,6 +106,9 @@ public class Game {
         return player1;
     }
 
+    public Playable getWinner() {
+        return winner;
+    }
 
     // setters
 
@@ -272,7 +281,8 @@ public class Game {
         if (cardsToBeat.size() == 1){
             for (Card card : cardsToBeat.keySet()){
                 roundWinner = cardsToBeat.get(card);
-                roundWinnerScore = getCardCategoryValue(card, category);
+                roundWinningCard = card;
+                roundWinningScore = getCardCategoryValue(card, category);
             }
         } return true;
     }

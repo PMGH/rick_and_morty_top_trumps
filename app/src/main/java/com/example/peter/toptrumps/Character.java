@@ -14,7 +14,7 @@ public enum Character {
 //    BIRDPERSON("Birdperson", 71, 50, 80, 7, "In bird culture, this is considered a dick move.", R.drawable.birdperson),
 //    SCREAMINGSUN("Screaming Sun", 1, 15, 50, 4, "AaaOOaaOOOOAAaaaaaaHHHH", R.drawable.screaming_sun),
 //    KROMBOPULOUSMICHAEL("Krombopulous Michael", 58, 92, 10, 8, "Here I go, killing again!", R.drawable.krombopulous_michael),
-//    SCARYTERRY("Scary Terry", 30, 80, 28, 5, "You can run, but you can't hide, BITCH!", R.drawable.scary_terry);
+//    SCARYTERRY("Scary Terry", 30, 80, 28, 5, "You can run, but you can't hide, BITCH!", R.drawable.scary_terry),
 //    UNITY("Unity", 84, 70, 55, 7, "In the news today, this looks a lot worse than it is. We’re… really just having a good time.", R.drawable.unity),
 //    ABRADOLFLINCLER("Abradolf Lincler", 71, 62, 50, 5, "Prepare to be emancipated from your own inferior genes!", R.drawable.abradolf_lincler);
 

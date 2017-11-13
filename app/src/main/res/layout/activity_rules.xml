@@ -60,17 +60,17 @@
 
     <EditText
         android:id="@+id/user_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="@string/hint_please_enter_your_name"
         android:inputType="textPersonName"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="@color/colorAccent"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />

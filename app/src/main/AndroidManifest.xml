@@ -22,7 +22,7 @@
             android:parentActivityName=".RulesActivity" />
         <activity android:name=".TopCardActivity" />
         <activity android:name=".ResultActivity" />
-        <activity android:name=".GameWonActivity"></activity>
+        <activity android:name=".GameWonActivity"/>
     </application>
 
 </manifest>
