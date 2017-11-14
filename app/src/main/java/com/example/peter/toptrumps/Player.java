@@ -12,14 +12,13 @@ public class Player implements Playable {
 
     private String name;
     private ArrayList<Card> hand;
-    // numWins for leader board
     private Integer numWins;
 
     public Player(String name) {
         this.name = name;
         this.numWins = 0;
         this.hand = new ArrayList<>();
-        // this.human = true // human or bot - true or false
+        // Extension:  this.human = true // human or bot - true or false
     }
 
     // DB constructor overload
@@ -40,6 +39,11 @@ public class Player implements Playable {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public ArrayList<Card> getHand() {
+        return hand;
     }
 
     public int getNumCards(){

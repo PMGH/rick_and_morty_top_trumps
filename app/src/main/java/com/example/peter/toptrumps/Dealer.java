@@ -32,6 +32,10 @@ public class Dealer extends Player implements Playable {
         return true;
     }
 
+    public void addToDeck(Card card){
+        deck.addToDeck(card);
+    }
+
     public Card dealTopCard(){
         return deck.removeTopCard();
     }

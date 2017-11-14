@@ -14,44 +14,41 @@ public class Game {
     private static Game INSTANCE = new Game();
 
     private ArrayList<Playable> players;
-    private Dealer dealer;
-    private Player player1;
-    private Deck deck;
-    private int totalNumCards; // for testing
-    private Playable playerTurn;
-    private String category;
-    private Integer valueToBeat;
-    private HashMap<Card, Playable> cardsToBeat;
-    private Card currentBestCard;
     private ArrayList<String> cpuBestCategory;
-    private Integer cpuCategoryValue;
-    private Integer roundNumber;
-    private boolean roundDraw;
-    private Playable roundWinner;
-    private Card roundWinningCard;
-    private Integer roundWinningScore;
     private HashMap<Card, Playable> pile;
+    private HashMap<Card, Playable> cardsToBeat;
+    private Dealer dealer;
+    private Deck deck;
+    private Player player1;
+    private String category;
+    private Card currentBestCard;
+    private Card roundWinningCard;
+    private int totalNumCards;
+    private int numUnusedCards;
+    private Integer valueToBeat;
+    private Integer roundNumber;
+    private Integer roundWinningScore;
+    private boolean roundDraw;
     private boolean gameWon;
+    private Playable playerTurn;
+    private Playable roundWinner;
     private Playable winner;
 
 
     public Game() {
         this.players = new ArrayList<>();
-        this.totalNumCards = 0;
-        this.playerTurn = new Player(null);
-        this.category = "";
-        this.valueToBeat = 0;
-        this.cardsToBeat = new HashMap<>();
-        this.currentBestCard = new Card(null, null, null, null, null, null, null);
         this.cpuBestCategory = new ArrayList<>();
-        this.roundNumber = 1;
-        this.roundDraw = false;
-        this.roundWinner = new Player(null);
-        this.roundWinningCard = new Card(null, null, null, null, null, null, null);
-        this.roundWinningScore = 0;
+
+        this.cardsToBeat = new HashMap<>();
         this.pile = new HashMap<>();
+
+        this.totalNumCards = 0;
+        this.roundNumber = 1;
+        this.valueToBeat = 0;
+        this.roundWinningScore = 0;
+
+        this.roundDraw = false;
         this.gameWon = false;
-        this.winner = new Player(null);
     }
 
 
@@ -152,8 +149,30 @@ public class Game {
 
         // the deck's cards are dealt among the players - at least 1 per player
         // if the deck is not divisible evenly by the number of players then dealing stops
-        Integer remainder = dealer.getDeckSize() % getNumPlayers();
-        while (dealer.getDeckSize() > remainder){
+        numUnusedCards = dealer.getDeckSize() % getNumPlayers();
+        while (dealer.getDeckSize() > numUnusedCards){
+            for (Playable player : players){
+                player.addToHand(dealer.dealTopCard());
+            }
+        }
+    }
+
+    public void playAgain(){
+        // reset round number, roundDraw and gameWon
+        roundNumber = 1;
+        roundDraw = false;
+        gameWon = false;
+
+        // return cards to dealer
+        returnCardsToDealer();
+
+        // shuffle the deck
+        dealer.shuffle();
+
+        // the deck's cards are dealt among the players - at least 1 per player
+        // if the deck is not divisible evenly by the number of players then dealing stops
+        numUnusedCards = dealer.getDeckSize() % getNumPlayers();
+        while (dealer.getDeckSize() > numUnusedCards){
             for (Playable player : players){
                 player.addToHand(dealer.dealTopCard());
             }
@@ -170,6 +189,7 @@ public class Game {
             }
             playRound(category);
         }
+        winner.addWin();
         System.out.println(winner.getName() + " won!");
     }
 
@@ -185,27 +205,24 @@ public class Game {
         cardsToBeat.put(currentBestCard, playerTurn);
         this.category = category;
 
-        // set the value to beat - value is displayed / read out (TextValue - and visibility)
+        // set the value to beat
         valueToBeat = getCardCategoryValue(currentBestCard, this.category);
 
         // each player's top card is added to pile
         addToPile();
 
-        // compareValues() by comparing card category values (weight?)
+        // compareValues by comparing topCard category values
         compareValues();
 
-        // if round won, add cards to roundWinnerName's hand from pile
+        // if round won, add cards to round winner's hand from pile
         if (checkRoundWin()){
             winnerTakePileCards();
         }
 
-        // checkEliminated()
-        checkEliminated();
-
-        // checkWin()
+        // check win
         checkWin();
 
-        // next Turn
+        // next turn
         if (players.size() > 1) {
             changeTurn();
         }
@@ -237,7 +254,7 @@ public class Game {
     public String getCPUBestCategory(){
         Card card = dealer.getTopCard(); // change this to if statement to check if player is a bot
         cpuBestCategory.clear();
-        cpuCategoryValue = -1;
+        Integer cpuCategoryValue = -1;
 
         HashMap<String, Integer> categoryValues = new HashMap<>();
         categoryValues.put("Intellect", card.getIntellect());
@@ -267,7 +284,7 @@ public class Game {
     }
 
     public void compareValues(){
-        // HashMap<>() cardsToBeat - if card value is more than highest value then added to HashMap and previous highest removed, if equal it is added and there is a draw scenario, else move to next card
+        // cardsToBeat - if card value is more than highest value then added to HashMap and previous highest removed, if equal it is added and there is a draw scenario, else move to next card
         for (Card card : pile.keySet()){
             if (card != currentBestCard){
                 Integer nextCardValue = getCardCategoryValue(card, category);
@@ -305,29 +322,38 @@ public class Game {
         pile.clear();
     }
 
-    public void checkEliminated(){
-        // players are eliminated when they lose their last card
-        ArrayList<Playable> toRemove = new ArrayList<>();
+    public void checkWin(){
+        // the winner is the player who obtains all the cards in play
+        int numCardsInPlay = totalNumCards - numUnusedCards;
 
         for (Playable player : players){
-            if (player.getNumCards() == 0){
-                toRemove.add(player);
+            if (player.getNumCards() + getPileSize() == numCardsInPlay){
+                Playable winningPlayer = player;
+                gameWon = true;
+                winner = winningPlayer;
+                winningPlayer.addWin();
             }
-        } players.removeAll(toRemove);
-    }
-
-    public void checkWin(){
-        // the winner is the player who obtains the whole pack
-        if (players.size() == 1){
-            Playable winningPlayer = players.get(0);
-            gameWon = true;
-            winner = winningPlayer;
-            winningPlayer.addWin();
         }
     }
 
     public void changeTurn(){
         playerTurn = roundWinner;
+    }
+
+    public void returnCardsToDealer(){
+        // cards returned to dealer's deck
+        ArrayList <Card> toMove = new ArrayList<>();
+        ArrayList<Card> winnerHand = winner.getHand();
+
+        for (Card card : winnerHand){
+            toMove.add(card);
+        }
+
+        for (Card card : toMove){
+            dealer.addToDeck(card);
+            winner.removeFromHand(card);
+        }
+        toMove.clear();
     }
 
 }

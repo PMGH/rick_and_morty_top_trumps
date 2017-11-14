@@ -3,7 +3,7 @@
     <string name="top_trumps">Top Trumps</string>
     <string name="rick_and_morty_title_text">Rick and Morty Title text</string>
     <string name="rick_and_morty_title_image">Rick and Morty Title Image</string>
-    <string name="rules_text">- Deck is dealt amongst the players\n- Left of the dealer starts\n- Player selects category from their top card\n- Other players reads out equivalent value from their top card\n- Best value wins the round\n- Winner takes all the cards from that round\n- Winner chooses the category for the next round from their top card\n- Players are eliminated when they lose their last card\n- Game is won when a player acquires the whole deck\n\n- If a round is drawn played cards are placed in a pile\n- A new category is chosen by the same person from their top card\n- The next round winner takes all the cards from the pile</string>
+    <string name="rules_text">- Deck is dealt amongst the players\n- Left of the dealer starts\n- Player selects category from their top card\n- CPU reads out equivalent value from their top card\n- Best value wins the round\n- Winner takes all the cards from that round\n- Winner chooses the category for the next round from their top card\n- Players are eliminated when they lose their last card\n- Game is won when a player acquires the whole deck\n\n- If a round is drawn played cards are placed in a pile\n- A new category is chosen by the same person from their top card\n- The next round winner takes all the cards from the pile</string>
     <string name="rules_header_text">Rules</string>
     <string name="play_game_btn_text">Play Game</string>
     <string name="cpu_user_image_content_description">CPU user image</string>
@@ -17,7 +17,7 @@
     <string name="morality_text">Morality: </string>
     <string name="how_schwifty_text">How Schwifty: </string>
     <string name="confirm_selection">Confirm Selection</string>
-    <string name="player_top_card_title_text">Player\'s Top Card</string>
+    <string name="player_top_card_title_text">Your Top Card</string>
     <string name="intellect">Intellect:</string>
     <string name="lethality">Lethality:</string>
     <string name="morality">Morality:</string>
@@ -32,4 +32,5 @@
     <string name="player_top_card_black_backplate">Player Top Card Black Backplate</string>
     <string name="play_text">PLAY</string>
     <string name="round_text">ROUND</string>
+    <string name="game_over_text_image">Game Over Text Image</string>
 </resources>

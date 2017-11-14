@@ -15,5 +15,6 @@ public interface Playable {
     Card getTopCard();
     void addWin();
     Integer getNumWins();
+    ArrayList<Card> getHand();
 
 }

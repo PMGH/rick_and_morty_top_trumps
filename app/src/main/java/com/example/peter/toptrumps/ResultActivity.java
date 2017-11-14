@@ -5,16 +5,21 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.widget.Toast.makeText;
 
 public class ResultActivity extends AppCompatActivity {
 
     TextView roundResultText;
     TextView roundCategoryText;
     TextView roundWinDeclarationText;
+    Toast toast;
 
     TextView cpuNameText;
     TextView cpuTopCardName;
@@ -34,14 +39,14 @@ public class ResultActivity extends AppCompatActivity {
     TextView userHowSchwiftyText;
     ImageView userBackplate;
 
+    Game game;
     Card userCard;
     Card cpuCard;
-    Game game;
-    String category;
-    boolean isRoundDraw;
-    String roundWinnerName;
     Card roundWinningCard;
+    String category;
+    String roundWinnerName;
     Integer roundWinnerScore;
+    boolean isRoundDraw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,10 +137,15 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         // toast catchphrase
-        Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_LONG).show();
+
+        toast = Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, -150);
+        toast.show();
     }
 
     public void nextRoundButtonOnClick(View button){
+        toast.cancel();
         if (!game.isGameWon()){
             initializeMainActivityIntent();
         } else {
@@ -156,25 +166,26 @@ public class ResultActivity extends AppCompatActivity {
     public void setWinColours(){
         // cpu colours
         if (roundWinnerName.equals(game.getDealer().getName())){
-            cpuTopCardName.setTextColor(Color.parseColor("#ff669900"));
             cpuNameText.setTextColor(Color.parseColor("#ff669900"));
             cpuBackplate.setBackgroundColor(Color.parseColor("#ff669900"));
+            cpuTopCardName.setTextColor(Color.parseColor("#ff669900"));
         } else {
-            cpuTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
             cpuNameText.setTextColor(Color.parseColor("#ffcc0000"));
             cpuBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            cpuBackplate.setPadding(2, 2, 2, 2);
+            cpuTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
         }
 
         // user colours
         if (roundWinnerName.equals(game.getPlayer1().getName())){
-            userTopCardName.setTextColor(Color.parseColor("#ff669900"));
             userNameText.setTextColor(Color.parseColor("#ff669900"));
             userBackplate.setBackgroundColor(Color.parseColor("#ff669900"));
+            userTopCardName.setTextColor(Color.parseColor("#ff669900"));
         } else {
-            userTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
             userNameText.setTextColor(Color.parseColor("#ffcc0000"));
             userBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
-
+            userBackplate.setPadding(2, 2, 2, 2);
+            userTopCardName.setTextColor(Color.parseColor("#ffcc0000"));
         }
     }
 

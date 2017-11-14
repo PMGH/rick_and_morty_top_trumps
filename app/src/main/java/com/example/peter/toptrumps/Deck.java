@@ -45,6 +45,10 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
+    public void addToDeck(Card card){
+        cards.add(card);
+    }
+
     public Card removeTopCard(){
         // if statement to handle out of bounds exceptions
         if (getNumCards() > 0){

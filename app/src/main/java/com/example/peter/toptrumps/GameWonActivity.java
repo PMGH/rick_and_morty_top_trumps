@@ -1,8 +1,10 @@
 package com.example.peter.toptrumps;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,12 +27,21 @@ public class GameWonActivity extends AppCompatActivity {
 
         gameResultText = (TextView) findViewById(game_result_text);
         gameWinner = game.getWinner();
+
         String gameWinnerStr = gameWinner.getName() + " Won!";
         gameResultText.setText(gameWinnerStr);
     }
 
     public void playAgainOnClick(View button){
-        Intent rulesIntent = new Intent(GameWonActivity.this, RulesActivity.class);
-        startActivity(rulesIntent);
+        // restart game
+        game = Game.getInstance();
+        game.playAgain();
+
+        initializeMainActivity();
+    }
+
+    public void initializeMainActivity(){
+        Intent MainActivityIntent = new Intent(GameWonActivity.this, MainActivity.class);
+        startActivity(MainActivityIntent);
     }
 }

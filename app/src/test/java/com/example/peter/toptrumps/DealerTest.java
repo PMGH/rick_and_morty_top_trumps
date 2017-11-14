@@ -14,29 +14,37 @@ public class DealerTest {
 
     Dealer dealer;
     Player player;
+    int counter;
 
     @Before
     public void before(){
         dealer = new Dealer("CPU David");
         player = new Player("Peter");
+
+        counter = 0;
+        for (Character character : Character.values()){
+            counter++;
+        }
     }
 
     @Test
     public void hasDeck(){
         assertNotNull(dealer.getDeck());
-        assertEquals(10, dealer.getDeckSize());
+        assertEquals(counter, dealer.getDeckSize());
     }
 
     @Test
     public void canDealTopCard(){
         dealer.dealTopCard();
-        assertEquals(9, dealer.getDeckSize());
+
+        assertEquals(counter - 1, dealer.getDeckSize());
     }
 
     @Test
     public void canDealTopCardToPlayer(){
         player.addToHand(dealer.dealTopCard());
-        assertEquals(9, dealer.getDeckSize());
+
+        assertEquals(counter - 1, dealer.getDeckSize());
         assertEquals(1, player.getNumCards());
     }
 }
