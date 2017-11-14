@@ -16,11 +16,11 @@
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Round 1 Result"
-        app:layout_constraintHorizontal_bias="0.497" />
+        tools:text="Round 1 Result" />
 
     <TextView
         android:id="@+id/cpu_name_text"
@@ -54,13 +54,13 @@
         android:layout_height="290dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#ffcc0000"
         android:contentDescription="@string/cpu_top_card_backplate_black_image"
+        android:padding="3dp"
         android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpu_name_text"
-        app:srcCompat="@color/colorPrimary"
-        android:background="#ffcc0000"
-        android:padding="3dp" />
+        app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/user_top_card_backplate"
@@ -68,13 +68,13 @@
         android:layout_height="290dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:background="#ff669900"
         android:contentDescription="@string/user_top_card_backplate_black_image"
+        android:padding="3dp"
         android:scaleType="fitXY"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_name_text"
-        app:srcCompat="@color/colorPrimary"
-        android:background="#ff669900"
-        android:padding="3dp"/>
+        app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/cpu_top_card_character_image"
@@ -107,25 +107,25 @@
         android:id="@+id/cpu_top_card_intellect_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
         android:text="@string/intellect"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:layout_marginStart="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image"
-        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_character_image" />
 
     <TextView
         android:id="@+id/cpu_top_card_intellect_value_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="0dp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        tools:text="85 / 100"
+        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image"
         app:layout_constraintTop_toTopOf="@+id/cpu_top_card_intellect_text"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image" />
+        tools:text="85 / 100" />
 
     <TextView
         android:id="@+id/cpu_top_card_lethality_text"
@@ -136,8 +136,8 @@
         android:text="@string/lethality"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_intellect_text"
-        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image" />
+        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_intellect_text" />
 
     <TextView
         android:id="@+id/cpu_top_card_lethality_value_text"
@@ -155,25 +155,25 @@
         android:id="@+id/cpu_top_card_morality_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
         android:text="@string/morality"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_lethality_text"
-        android:layout_marginStart="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image" />
+        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_lethality_text" />
 
     <TextView
         android:id="@+id/cpu_top_card_morality_value_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        tools:text="40 / 100"
         android:layout_marginEnd="1dp"
         android:layout_marginTop="0dp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image"
         app:layout_constraintTop_toTopOf="@+id/cpu_top_card_morality_text"
-        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image" />
+        tools:text="40 / 100" />
 
     <TextView
         android:id="@+id/cpu_top_card_howSchwifty_text"
@@ -184,20 +184,20 @@
         android:text="@string/how_schwifty"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_morality_text"
-        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image" />
+        app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_character_image"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_morality_text" />
 
     <TextView
         android:id="@+id/cpu_top_card_howSchwifty_value_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        tools:text="9 / 10"
+        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image"
         app:layout_constraintTop_toTopOf="@+id/cpu_top_card_howSchwifty_text"
-        android:layout_marginTop="0dp"
-        app:layout_constraintRight_toRightOf="@+id/cpu_top_card_character_image" />
+        tools:text="9 / 10" />
 
     <TextView
         android:id="@+id/user_top_card_name_text"
@@ -218,13 +218,13 @@
         android:id="@+id/user_top_card_character_image"
         android:layout_width="150dp"
         android:layout_height="90dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/user_top_card_character_image"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/rick_and_morty_title"
-        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/user_top_card_backplate"
         app:layout_constraintTop_toBottomOf="@+id/user_top_card_name_text"
-        android:layout_marginStart="18dp"
-        app:layout_constraintLeft_toLeftOf="@+id/user_top_card_backplate" />
+        app:srcCompat="@drawable/rick_and_morty_title" />
 
     <TextView
         android:id="@+id/user_top_card_intellect_text"
@@ -242,24 +242,24 @@
         android:id="@+id/user_top_card_intellect_value_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        tools:text="40 / 100"
-        android:layout_marginEnd="0dp"
         app:layout_constraintRight_toRightOf="@+id/user_top_card_character_image"
         app:layout_constraintTop_toTopOf="@+id/user_top_card_intellect_text"
-        android:layout_marginTop="0dp" />
+        tools:text="40 / 100" />
 
     <TextView
         android:id="@+id/user_top_card_lethality_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="11dp"
         android:text="@string/lethality"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:layout_marginStart="-3dp"
         app:layout_constraintLeft_toLeftOf="@+id/user_top_card_character_image"
-        android:layout_marginTop="11dp"
         app:layout_constraintTop_toBottomOf="@+id/user_top_card_intellect_text" />
 
     <TextView
@@ -350,11 +350,11 @@
         android:layout_marginTop="39dp"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_backplate"
-        tools:text="Category:  Intellect"
-        app:layout_constraintHorizontal_bias="0.497" />
+        tools:text="Category:  Intellect" />
 
     <Button
         android:id="@+id/next_round_btn"

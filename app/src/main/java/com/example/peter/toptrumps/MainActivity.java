@@ -41,10 +41,6 @@ public class MainActivity extends AppCompatActivity {
         String roundStr = "Round: " + game.getRoundNumber().toString();
         roundNumberText.setText(roundStr);
 
-        // set gif/videoView
-        VideoView videoView = (VideoView) findViewById(R.id.videoView);
-//        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable));
-
         // user
         userNameText = (TextView) findViewById(R.id.user_name_text);
         userNameText.setText(player.getName());

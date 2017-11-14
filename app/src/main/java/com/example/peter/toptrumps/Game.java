@@ -147,8 +147,10 @@ public class Game {
         // shuffle the deck
         dealer.shuffle();
 
-        // all the deck's cards are dealt among the players - at least 1 per player
-        while (dealer.getDeckSize() > 0){
+        // the deck's cards are dealt among the players - at least 1 per player
+        // if the deck is not divisible evenly by the number of players then dealing stops
+        Integer remainder = dealer.getDeckSize() % getNumPlayers();
+        while (dealer.getDeckSize() > remainder){
             for (Playable player : players){
                 player.addToHand(dealer.dealTopCard());
             }

@@ -3,12 +3,12 @@
     <string name="top_trumps">Top Trumps</string>
     <string name="rick_and_morty_title_text">Rick and Morty Title text</string>
     <string name="rick_and_morty_title_image">Rick and Morty Title Image</string>
-    <string name="rules_text">- Deck is dealt amongst the players\n- Min 2 players (dealer incl.)\n- Left of the dealer starts\n- Player selects category from their top card and reads out it\'s value\n- Each other player reads out the equivalent value from their top card\n- Best value wins the round\n- Winner takes all the cards from that round\n- Winner chooses the category for the next round from their top card\n- Players are eliminated when they lose their last card\n- Game is won when a player acquires the whole deck\n\n- If a round is drawn played cards are placed in a pile\n- A new category is chosen by the same person from their top card\n- The next round winner takes all the cards from the pile</string>
+    <string name="rules_text">- Deck is dealt amongst the players\n- Left of the dealer starts\n- Player selects category from their top card\n- Other players reads out equivalent value from their top card\n- Best value wins the round\n- Winner takes all the cards from that round\n- Winner chooses the category for the next round from their top card\n- Players are eliminated when they lose their last card\n- Game is won when a player acquires the whole deck\n\n- If a round is drawn played cards are placed in a pile\n- A new category is chosen by the same person from their top card\n- The next round winner takes all the cards from the pile</string>
     <string name="rules_header_text">Rules</string>
     <string name="play_game_btn_text">Play Game</string>
     <string name="cpu_user_image_content_description">CPU user image</string>
     <string name="hint_please_enter_your_name">Please enter your name</string>
-    <string name="play_round">Play Round</string>
+    <string name="play_round">    PLAY                                ROUND</string>
     <string name="user_image_content_description">User image</string>
     <string name="card_pile_image">Card pile image</string>
     <string name="character_image">Character Image</string>

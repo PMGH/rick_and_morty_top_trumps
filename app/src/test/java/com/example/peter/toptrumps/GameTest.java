@@ -42,7 +42,8 @@ public class GameTest {
     @Test
     public void dealerDealsAllCards(){
         game.start("Peter");
-        assertEquals(0, game.getDeckSize());
+        int remainder = game.getDeckSize() % game.getNumPlayers();
+        assertEquals(remainder, game.getDeckSize());
     }
 
     @Test
