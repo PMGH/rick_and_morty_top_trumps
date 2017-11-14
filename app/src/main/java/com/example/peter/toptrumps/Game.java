@@ -295,6 +295,7 @@ public class Game {
                     currentBestCard = card;
                     valueToBeat = nextCardValue;
                 } else if (nextCardValue.equals(valueToBeat)){
+                    // draw
                     cardsToBeat.put(card, pile.get(card));
                 }
             }
@@ -302,6 +303,7 @@ public class Game {
     }
 
     public boolean checkRoundWin(){
+        // cardsToBeat is more than 1 when it's a draw
         if (cardsToBeat.size() == 1){
             roundDraw = false;
             for (Card card : cardsToBeat.keySet()){
@@ -328,10 +330,9 @@ public class Game {
 
         for (Playable player : players){
             if (player.getNumCards() + getPileSize() == numCardsInPlay){
-                Playable winningPlayer = player;
                 gameWon = true;
-                winner = winningPlayer;
-                winningPlayer.addWin();
+                winner = player;
+                player.addWin();
             }
         }
     }
@@ -341,7 +342,8 @@ public class Game {
     }
 
     public void returnCardsToDealer(){
-        // cards returned to dealer's deck
+        // return cards to dealer's deck
+        // need additional toMove ArrayList to prevent iterating over and modifying winnerHand
         ArrayList <Card> toMove = new ArrayList<>();
         ArrayList<Card> winnerHand = winner.getHand();
 

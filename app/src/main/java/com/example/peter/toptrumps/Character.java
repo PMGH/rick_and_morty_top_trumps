@@ -16,7 +16,12 @@ public enum Character {
     KROMBOPULOUSMICHAEL("Krombopulous Michael", 58, 92, 10, 8, "Here I go, killing again!", R.drawable.krombopulous_michael),
     SCARYTERRY("Scary Terry", 30, 80, 28, 5, "You can run, but you can't hide, BITCH!", R.drawable.scary_terry),
     UNITY("Unity", 84, 70, 55, 7, "In the news today, this looks a lot worse than it is. We’re… really just having a good time.", R.drawable.unity),
-    ABRADOLFLINCLER("Abradolf Lincler", 71, 62, 50, 5, "Prepare to be emancipated from your own inferior genes!", R.drawable.abradolf_lincler);
+    ABRADOLFLINCLER("Abradolf Lincler", 71, 62, 50, 5, "Prepare to be emancipated from your own inferior genes!", R.drawable.abradolf_lincler),
+    DRXENONBLOOM("Dr. Xenon Bloom", 87, 5 ,41, 2, "The digestive tract is the evacuation route, get it?", R.drawable.dr_xenon_bloom),
+    ZEEP("Zeep Xanflorp", 90, 61, 40, 3, "I dropped out of school, its not a place for smart people.", R.drawable.zeep_xanflorp),
+    GOLDENCROMULON("Golden Cromulon", 75, 78, 15, 10, "SHOW ME WHAT YOU GOT!", R.drawable.golden_cromulon),
+    MRMEESEEKS("Mr. Meeseeks", 40, 53, 36, 7, "I'm Mr. Meeseeks look at me!", R.drawable.mr_meeseeks),
+    EVILMORTY("Evil Morty", 65, 80, 18, 8, "This seems like a good time for a drink, and a cold calculated speech with sinister overtones. A speech about politics, about order, brotherhood, power. But speeches are for campaigning. Now is the time for action.", R.drawable.evil_morty);
 
     String name;
     int intellect;

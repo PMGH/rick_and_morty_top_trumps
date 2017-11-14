@@ -51,11 +51,11 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        //get extras
-        handleExtras();
-
         // setup game
         game = Game.getInstance();
+
+        //get extras
+        handleExtras();
 
         // setup views
         getLayoutViews();
@@ -90,10 +90,8 @@ public class ResultActivity extends AppCompatActivity {
         if (resultActivityIntent.hasExtra("category")){
             Bundle extras = resultActivityIntent.getExtras();
             String roundCategory = extras.getString("category");
-            game = Game.getInstance();
             category = game.playerSetCategory(roundCategory);
         } else {
-            game = Game.getInstance();
             category = game.getCPUBestCategory();
         }
     }
@@ -214,7 +212,9 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void nextRoundButtonOnClick(View button){
-        toast.cancel();
+        if (!isRoundDraw){
+            toast.cancel();
+        }
 
         if (!game.isGameWon()){
             initializeMainActivityIntent();
