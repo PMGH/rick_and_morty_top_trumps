@@ -29,4 +29,7 @@
     <string name="next_round_btn_text">Next Round</string>
     <string name="play_again_btn_text">Play Again ?</string>
     <string name="game_over_text">GAME OVER</string>
+    <string name="player_top_card_black_backplate">Player Top Card Black Backplate</string>
+    <string name="play_text">PLAY</string>
+    <string name="round_text">ROUND</string>
 </resources>

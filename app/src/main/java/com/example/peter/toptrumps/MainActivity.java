@@ -15,19 +15,23 @@ public class MainActivity extends AppCompatActivity {
     TextView cpuNameText;
     TextView cpuWinsText;
     TextView cpuNumCardsText;
+    TextView cardPileTotalText;
     TextView userNameText;
     TextView userWinsText;
     TextView userNumCardsText;
+
     Game game;
     Player player;
     Dealer dealer;
     Playable turn;
+    Integer cardPileTotal;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("Main Activity", "Made it to the main activity intent");
 
         game = Game.getInstance();
 
@@ -35,11 +39,17 @@ public class MainActivity extends AppCompatActivity {
         player = game.getPlayer1();
 
         turn = game.getPlayerTurn();
+        cardPileTotal = game.getPileSize();
 
         // round number
         roundNumberText = (TextView) findViewById(R.id.round_number_text);
-        String roundStr = "Round: " + game.getRoundNumber().toString();
+        String roundStr = "Round " + game.getRoundNumber().toString() + " (" + turn.getName() + "\'s Turn)";
         roundNumberText.setText(roundStr);
+
+        // cards in pile
+        cardPileTotalText = (TextView) findViewById(R.id.number_cards_in_pile_text);
+        String cardPileTotalTextStr = cardPileTotal + " Cards in the Pile";
+        cardPileTotalText.setText(cardPileTotalTextStr);
 
         // user
         userNameText = (TextView) findViewById(R.id.user_name_text);

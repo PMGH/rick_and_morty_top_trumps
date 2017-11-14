@@ -38,9 +38,10 @@ public class ResultActivity extends AppCompatActivity {
     Card cpuCard;
     Game game;
     String category;
+    boolean isRoundDraw;
     String roundWinnerName;
-    Integer roundWinnerScore;
     Card roundWinningCard;
+    Integer roundWinnerScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class ResultActivity extends AppCompatActivity {
             category = game.playerSetCategory(roundCategory);
         } else {
             game = Game.getInstance();
-            category = game.getBestCategory();
+            category = game.getCPUBestCategory();
         }
 
         game = Game.getInstance();
@@ -105,6 +106,7 @@ public class ResultActivity extends AppCompatActivity {
 
         // play round and get winner details
         game.playRound(category);
+        isRoundDraw = game.isRoundDraw();
         roundWinnerName = game.getRoundWinner().getName();
         roundWinningCard = game.getRoundWinningCard();
         roundWinnerScore = game.getRoundWinningScore();
@@ -119,24 +121,40 @@ public class ResultActivity extends AppCompatActivity {
         String roundWinDeclarationTextStr = roundWinnerName + " won with a score of " + roundWinnerScore.toString() + ".";
         roundWinDeclarationText.setText(roundWinDeclarationTextStr);
 
-        // set colours
-        setColours();
+        // check if draw then set colours accordingly
+        if (isRoundDraw){
+            setDrawColours();
+            // draw declaration
+            String roundDrawDeclarationTextStr = "DRAW! Cards added to the pile.";
+            roundWinDeclarationText.setText(roundDrawDeclarationTextStr);
+        } else {
+            setWinColours();
+        }
 
         // toast catchphrase
-        Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, roundWinningCard.getCatchphrase(), Toast.LENGTH_LONG).show();
     }
 
     public void nextRoundButtonOnClick(View button){
         if (!game.isGameWon()){
-            Intent mainActivityIntent = new Intent(ResultActivity.this, MainActivity.class);
-            startActivity(mainActivityIntent);
+            initializeMainActivityIntent();
         } else {
-            Intent gameWonIntent = new Intent(ResultActivity.this, GameWonActivity.class);
-            startActivity(gameWonIntent);
+            initializeGameWonIntent();
         }
     }
 
-    public void setColours(){
+    public void initializeMainActivityIntent(){
+        Intent mainActivityIntent = new Intent(ResultActivity.this, MainActivity.class);
+        startActivity(mainActivityIntent);
+    }
+
+    public void initializeGameWonIntent(){
+        Intent gameWonIntent = new Intent(ResultActivity.this, GameWonActivity.class);
+        startActivity(gameWonIntent);
+    }
+
+    public void setWinColours(){
+        // cpu colours
         if (roundWinnerName.equals(game.getDealer().getName())){
             cpuTopCardName.setTextColor(Color.parseColor("#ff669900"));
             cpuNameText.setTextColor(Color.parseColor("#ff669900"));
@@ -147,6 +165,7 @@ public class ResultActivity extends AppCompatActivity {
             cpuBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
         }
 
+        // user colours
         if (roundWinnerName.equals(game.getPlayer1().getName())){
             userTopCardName.setTextColor(Color.parseColor("#ff669900"));
             userNameText.setTextColor(Color.parseColor("#ff669900"));
@@ -157,6 +176,21 @@ public class ResultActivity extends AppCompatActivity {
             userBackplate.setBackgroundColor(Color.parseColor("#ffcc0000"));
 
         }
+    }
+
+    public void setDrawColours(){
+        // draw declaration
+        roundWinDeclarationText.setTextColor(Color.parseColor("#FFAAAAAA"));
+
+        // cpu colours
+        cpuTopCardName.setTextColor(Color.parseColor("#FFAAAAAA"));
+        cpuNameText.setTextColor(Color.parseColor("#FFAAAAAA"));
+        cpuBackplate.setBackgroundColor(Color.parseColor("#FFAAAAAA"));
+
+        // user colours
+        userTopCardName.setTextColor(Color.parseColor("#FFAAAAAA"));
+        userNameText.setTextColor(Color.parseColor("#FFAAAAAA"));
+        userBackplate.setBackgroundColor(Color.parseColor("#FFAAAAAA"));
     }
 
 }

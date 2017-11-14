@@ -20,14 +20,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Round: 1" />
+        tools:text="Round 1 (Peter's Turn)" />
 
     <ImageView
         android:id="@+id/CPU_user_image"
         android:layout_width="99dp"
         android:layout_height="92dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="83dp"
         android:contentDescription="@string/cpu_user_image_content_description"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -70,12 +70,81 @@
         app:layout_constraintLeft_toRightOf="@+id/CPU_user_image"
         tools:text="CPU user number of cards" />
 
+    <Button
+        android:id="@+id/play_round_btn"
+        android:layout_width="220dp"
+        android:layout_height="271dp"
+        android:layout_marginBottom="146dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="8dp"
+        android:background="#000f0f0f"
+        android:onClick="playRoundButtonOnClick"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintLeft_toRightOf="@+id/play_text"
+        app:layout_constraintRight_toLeftOf="@+id/round_text"
+        tools:layout_editor_absoluteY="186dp" />
+
+    <TextView
+        android:id="@+id/number_cards_in_pile_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/user_image"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_round_btn"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="2 Cards in the Pile" />
+
+    <TextView
+        android:id="@+id/round_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/round_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/user_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CPU_user_image" />
+
+    <TextView
+        android:id="@+id/play_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/play_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/user_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CPU_user_image" />
+
     <ImageView
         android:id="@+id/user_image"
         android:layout_width="82dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginStart="16dp"
         android:contentDescription="@string/user_image_content_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -117,58 +186,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/user_image"
         app:layout_constraintLeft_toRightOf="@+id/user_image"
         tools:text="User number of cards" />
-
-    <Button
-        android:id="@+id/play_round_btn"
-        android:layout_width="221dp"
-        android:layout_height="267dp"
-        android:layout_marginBottom="145dp"
-        android:layout_marginEnd="16dp"
-        android:background="#000f0f0f"
-        android:onClick="playRoundButtonOnClick"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.605"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/play_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="PLAY"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/user_image"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/play_round_btn"
-        app:layout_constraintTop_toBottomOf="@+id/CPU_user_image" />
-
-    <TextView
-        android:id="@+id/round_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="ROUND"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/user_image"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintLeft_toRightOf="@+id/play_round_btn"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CPU_user_image"
-        app:layout_constraintVertical_bias="0.501" />
 
 </android.support.constraint.ConstraintLayout>

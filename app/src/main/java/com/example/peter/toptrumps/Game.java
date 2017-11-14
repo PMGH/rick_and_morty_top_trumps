@@ -23,16 +23,16 @@ public class Game {
     private Integer valueToBeat;
     private HashMap<Card, Playable> cardsToBeat;
     private Card currentBestCard;
+    private ArrayList<String> cpuBestCategory;
+    private Integer cpuCategoryValue;
+    private Integer roundNumber;
+    private boolean roundDraw;
     private Playable roundWinner;
     private Card roundWinningCard;
     private Integer roundWinningScore;
     private HashMap<Card, Playable> pile;
     private boolean gameWon;
     private Playable winner;
-
-    private ArrayList<String> cpuBestCategory;
-    private Integer cpuCategoryLowestDelta;
-    private Integer roundNumber;
 
 
     public Game() {
@@ -43,16 +43,15 @@ public class Game {
         this.valueToBeat = 0;
         this.cardsToBeat = new HashMap<>();
         this.currentBestCard = new Card(null, null, null, null, null, null, null);
+        this.cpuBestCategory = new ArrayList<>();
+        this.roundNumber = 1;
+        this.roundDraw = false;
         this.roundWinner = new Player(null);
         this.roundWinningCard = new Card(null, null, null, null, null, null, null);
         this.roundWinningScore = 0;
         this.pile = new HashMap<>();
         this.gameWon = false;
         this.winner = new Player(null);
-
-        this.cpuBestCategory = new ArrayList<>();
-        this.cpuCategoryLowestDelta = 101;
-        this.roundNumber = 1;
     }
 
 
@@ -76,6 +75,10 @@ public class Game {
 
     public Integer getRoundNumber() {
         return roundNumber;
+    }
+
+    public boolean isRoundDraw() {
+        return roundDraw;
     }
 
     public Playable getRoundWinner() {
@@ -163,7 +166,7 @@ public class Game {
             if (playerTurn.equals(player1)){
                 category = playerSetCategory("Intellect");
             } else {
-                category = getBestCategory();
+                category = getCPUBestCategory();
             }
             playRound(category);
         }
@@ -180,9 +183,10 @@ public class Game {
         // get playerTurn topCard and set it to be the cardToBeat
         currentBestCard = playerTurn.getTopCard();
         cardsToBeat.put(currentBestCard, playerTurn);
+        this.category = category;
 
         // set the value to beat - value is displayed / read out (TextValue - and visibility)
-        valueToBeat = getCardCategoryValue(currentBestCard, category);
+        valueToBeat = getCardCategoryValue(currentBestCard, this.category);
 
         // each player's top card is added to pile
         addToPile();
@@ -230,26 +234,27 @@ public class Game {
         }
     }
 
-    public String getBestCategory(){
+    public String getCPUBestCategory(){
         Card card = dealer.getTopCard(); // change this to if statement to check if player is a bot
         cpuBestCategory.clear();
-        cpuCategoryLowestDelta = 101;
+        cpuCategoryValue = -1;
 
-        HashMap<String, Integer> deltas = new HashMap<>();
-        deltas.put("Intellect", 100 - card.getIntellect());
-        deltas.put("Lethality", 100 - card.getLethality());
-        deltas.put("Morality", 100 - card.getMorality());
-        deltas.put("How Schwifty", (10 - card.getHowSchwifty()) * 10);
+        HashMap<String, Integer> categoryValues = new HashMap<>();
+        categoryValues.put("Intellect", card.getIntellect());
+        categoryValues.put("Lethality", card.getLethality());
+        categoryValues.put("Morality", card.getMorality());
+        categoryValues.put("How Schwifty", card.getHowSchwifty() * 10);
 
-        for (String delta : deltas.keySet()){
-            Integer value = deltas.get(delta);
+        for (String category : categoryValues.keySet()){
+            Integer value = categoryValues.get(category);
 
-            if (value < cpuCategoryLowestDelta) {
+            if (value > cpuCategoryValue) {
+                // clear if the value is higher than the current highest category value
                 cpuBestCategory.clear();
-                cpuCategoryLowestDelta = value;
-                cpuBestCategory.add(delta);
-            } else if (value.equals(cpuCategoryLowestDelta)){
-                cpuBestCategory.add(delta);
+                cpuCategoryValue = value;
+                cpuBestCategory.add(category);
+            } else if (value.equals(cpuCategoryValue)){
+                cpuBestCategory.add(category);
             }
         } return cpuBestCategory.get(generateRandom(cpuBestCategory.size()));
     }
@@ -281,12 +286,16 @@ public class Game {
 
     public boolean checkRoundWin(){
         if (cardsToBeat.size() == 1){
+            roundDraw = false;
             for (Card card : cardsToBeat.keySet()){
                 roundWinner = cardsToBeat.get(card);
                 roundWinningCard = card;
                 roundWinningScore = getCardCategoryValue(card, category);
+                return true;
             }
-        } return true;
+        }
+        roundDraw = true;
+        return false;
     }
 
     public void winnerTakePileCards(){
