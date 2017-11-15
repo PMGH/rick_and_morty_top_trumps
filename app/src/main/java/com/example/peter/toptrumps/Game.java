@@ -15,6 +15,7 @@ public class Game {
 
     private ArrayList<Playable> players;
     private ArrayList<String> cpuBestCategory;
+    private ArrayList<Card> drawPile;
     private HashMap<Card, Playable> pile;
     private HashMap<Card, Playable> cardsToBeat;
     private Dealer dealer;
@@ -38,6 +39,7 @@ public class Game {
     public Game() {
         this.players = new ArrayList<>();
         this.cpuBestCategory = new ArrayList<>();
+        this.drawPile = new ArrayList<>();
 
         this.cardsToBeat = new HashMap<>();
         this.pile = new HashMap<>();
@@ -92,6 +94,10 @@ public class Game {
 
     public int getPileSize(){
         return pile.size();
+    }
+
+    public int getDrawPileSize() {
+        return drawPile.size();
     }
 
     public boolean isGameWon() {
@@ -194,9 +200,6 @@ public class Game {
     }
 
     public void playRound(String category){
-        // increment round number
-        roundNumber++;
-
         // clear cardsToBeat HashMap
         cardsToBeat.clear();
 
@@ -217,6 +220,9 @@ public class Game {
         // if round won, add cards to round winner's hand from pile
         if (checkRoundWin()){
             winnerTakePileCards();
+            winnerTakeDrawPileCards();
+        } else {
+            moveToDrawPile();
         }
 
         // check win
@@ -226,6 +232,9 @@ public class Game {
         if (players.size() > 1) {
             changeTurn();
         }
+
+        // increment round number
+        roundNumber++;
     }
 
 
@@ -283,6 +292,21 @@ public class Game {
         }
     }
 
+    public void moveToDrawPile(){
+        ArrayList<Card> toMove = new ArrayList<>();
+
+        for (Card card : pile.keySet()){
+            toMove.add(card);
+        }
+
+        for (Card card : toMove){
+            drawPile.add(card);
+            pile.remove(card);
+        }
+        toMove.clear();
+        pile.clear();
+    }
+
     public void compareValues(){
         // cardsToBeat - if card value is more than highest value then added to HashMap and previous highest removed, if equal it is added and there is a draw scenario, else move to next card
         for (Card card : pile.keySet()){
@@ -314,6 +338,7 @@ public class Game {
             }
         }
         roundDraw = true;
+        moveToDrawPile();
         return false;
     }
 
@@ -324,12 +349,19 @@ public class Game {
         pile.clear();
     }
 
+    public void winnerTakeDrawPileCards(){
+        for (Card card : drawPile){
+            roundWinner.addToHand(card);
+        }
+        drawPile.clear();
+    }
+
     public void checkWin(){
         // the winner is the player who obtains all the cards in play
         int numCardsInPlay = totalNumCards - numUnusedCards;
 
         for (Playable player : players){
-            if (player.getNumCards() + getPileSize() == numCardsInPlay){
+            if (player.getNumCards() + getDrawPileSize() == numCardsInPlay){
                 gameWon = true;
                 winner = player;
                 player.addWin();

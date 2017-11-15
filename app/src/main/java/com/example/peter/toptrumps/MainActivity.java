@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         player = game.getPlayer1();
 
         turn = game.getPlayerTurn();
-        cardPileTotal = game.getPileSize();
+        cardPileTotal = game.getDrawPileSize();
 
         // round number
         roundNumberText = (TextView) findViewById(R.id.round_number_text);
