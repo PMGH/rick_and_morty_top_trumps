@@ -81,9 +81,9 @@
 
     <Button
         android:id="@+id/play_round_btn"
-        android:layout_width="220dp"
-        android:layout_height="271dp"
-        android:layout_marginBottom="146dp"
+        android:layout_width="535dp"
+        android:layout_height="267dp"
+        android:layout_marginBottom="145dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="8dp"
         android:background="#000f0f0f"
@@ -92,7 +92,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintLeft_toRightOf="@+id/play_text"
         app:layout_constraintRight_toLeftOf="@+id/round_text" />
 
