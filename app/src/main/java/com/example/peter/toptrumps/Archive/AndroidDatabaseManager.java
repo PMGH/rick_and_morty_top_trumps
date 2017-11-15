@@ -1,5 +1,5 @@
 //add your package name here example: package com.example.dbm;
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Archive;
 
 //all required import files
 import java.util.ArrayList;
@@ -8,8 +8,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.MatrixCursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,8 +30,6 @@ import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.peter.toptrumps.DBHelper;
 
 public class AndroidDatabaseManager extends Activity implements OnItemClickListener {
 

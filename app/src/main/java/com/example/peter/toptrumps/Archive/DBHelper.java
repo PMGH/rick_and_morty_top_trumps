@@ -1,4 +1,4 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Archive;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.peter.toptrumps.Playable;
+import com.example.peter.toptrumps.Player;
 
 import java.util.ArrayList;
 
