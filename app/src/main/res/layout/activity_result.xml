@@ -50,33 +50,33 @@
 
     <ImageView
         android:id="@+id/cpu_top_card_backplate"
-        android:layout_width="190dp"
+        android:layout_width="193dp"
         android:layout_height="300dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="11dp"
         android:background="#ffcc0000"
         android:contentDescription="@string/cpu_top_card_backplate_black_image"
         android:padding="3dp"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpu_name_text"
-        app:srcCompat="@color/colorPrimary" />
+        app:srcCompat="@drawable/card_background" />
 
     <ImageView
         android:id="@+id/user_top_card_backplate"
-        android:layout_width="190dp"
+        android:layout_width="193dp"
         android:layout_height="300dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="12dp"
         android:background="#ff669900"
         android:contentDescription="@string/user_top_card_backplate_black_image"
         android:padding="3dp"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintLeft_toRightOf="@+id/cpu_top_card_backplate"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_name_text"
-        app:srcCompat="@color/colorPrimary"
-        app:layout_constraintHorizontal_bias="0.714" />
+        app:srcCompat="@drawable/card_background" />
 
     <ImageView
         android:id="@+id/cpu_top_card_character_image"
@@ -84,8 +84,10 @@
         android:layout_height="110dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
+        android:background="#424242"
         android:contentDescription="@string/cpu_top_card_character_image"
-        android:scaleType="fitCenter"
+        android:padding="2dp"
+        android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="@+id/cpu_top_card_backplate"
         app:layout_constraintTop_toBottomOf="@+id/cpu_top_card_name_text"
         app:srcCompat="@drawable/rick_and_morty_title" />
@@ -223,8 +225,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
+        android:background="#424242"
         android:contentDescription="@string/user_top_card_character_image"
-        android:scaleType="fitCenter"
+        android:padding="2dp"
+        android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="@+id/user_top_card_backplate"
         app:layout_constraintRight_toRightOf="@+id/user_top_card_backplate"
         app:layout_constraintTop_toBottomOf="@+id/user_top_card_name_text"
