@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/player_top_card_backplate"
         android:layout_width="334dp"
-        android:layout_height="441dp"
+        android:layout_height="450dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:text="@string/intellect_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -69,16 +69,16 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="67dp"
-        android:layout_marginTop="-11dp"
+        android:layout_marginTop="0dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintLeft_toRightOf="@+id/intellect_text"
-        app:layout_constraintRight_toRightOf="@+id/character_image"
         app:layout_constraintTop_toTopOf="@+id/intellect_text"
-        tools:text="i / 100" />
+        tools:text="i / 100"
+        app:layout_constraintRight_toLeftOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.465" />
 
     <TextView
         android:id="@+id/lethality_text"
@@ -99,23 +99,23 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="67dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="0dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintLeft_toRightOf="@+id/lethality_text"
-        app:layout_constraintRight_toRightOf="@+id/character_image"
-        app:layout_constraintTop_toBottomOf="@+id/intellect_value_text"
-        tools:text="l / 100" />
+        app:layout_constraintTop_toTopOf="@+id/lethality_text"
+        tools:text="l / 100"
+        app:layout_constraintRight_toRightOf="@+id/intellect_value_text"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/morality_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="14dp"
         android:text="@string/morality_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -128,24 +128,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="-9dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="0dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintLeft_toRightOf="@+id/morality_text"
-        app:layout_constraintRight_toRightOf="@+id/character_image"
         app:layout_constraintTop_toTopOf="@+id/morality_text"
-        tools:text="m / 100" />
+        tools:text="m / 100"
+        app:layout_constraintRight_toRightOf="@+id/lethality_value_text"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/howSchwifty_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         android:text="@string/how_schwifty_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -158,17 +158,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="0dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintLeft_toRightOf="@+id/howSchwifty_text"
-        app:layout_constraintRight_toRightOf="@+id/character_image"
-        app:layout_constraintTop_toBottomOf="@+id/morality_value_text"
-        tools:text="s / 10" />
+        app:layout_constraintTop_toTopOf="@+id/howSchwifty_text"
+        tools:text="s / 10"
+        app:layout_constraintRight_toRightOf="@+id/morality_value_text"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
         android:id="@+id/confirm_selection_btn"
@@ -205,20 +205,18 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="50dp"
-        android:layout_height="140dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="-22dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/howSchwifty_value_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
         app:layout_constraintRight_toRightOf="@+id/character_image"
-        app:layout_constraintTop_toBottomOf="@+id/character_image"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@+id/intellect_value_text"
+        android:layout_marginTop="0dp">
 
         <RadioButton
             android:id="@+id/intellect_radio_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginBottom="14dp"
             android:layout_marginEnd="0dp"
             android:layout_marginTop="0dp"
             app:buttonTint="@android:color/background_light"
@@ -228,9 +226,10 @@
         <RadioButton
             android:id="@+id/lethality_radio_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginBottom="14dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="0dp"
             app:buttonTint="@android:color/background_light"
             app:layout_constraintRight_toRightOf="@+id/character_image"
             app:layout_constraintTop_toBottomOf="@+id/intellect_radio_btn" />
@@ -238,9 +237,10 @@
         <RadioButton
             android:id="@+id/morality_radio_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginBottom="14dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="0dp"
             app:buttonTint="@android:color/background_light"
             app:layout_constraintRight_toRightOf="@+id/character_image"
             app:layout_constraintTop_toBottomOf="@+id/lethality_radio_btn" />
@@ -248,12 +248,19 @@
         <RadioButton
             android:id="@+id/howSchwifty_radio_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="0dp"
             app:buttonTint="@android:color/background_light"
             app:layout_constraintRight_toRightOf="@+id/character_image"
             app:layout_constraintTop_toBottomOf="@+id/morality_radio_btn" />
     </RadioGroup>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical" />
 
 </android.support.constraint.ConstraintLayout>
