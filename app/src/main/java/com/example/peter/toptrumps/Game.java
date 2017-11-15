@@ -36,7 +36,7 @@ public class Game {
     private Playable winner;
 
 
-    public Game() {
+    private Game() {
         this.players = new ArrayList<>();
         this.cpuBestCategory = new ArrayList<>();
         this.drawPile = new ArrayList<>();
@@ -163,28 +163,6 @@ public class Game {
         }
     }
 
-    public void playAgain(){
-        // reset round number, roundDraw and gameWon
-        roundNumber = 1;
-        roundDraw = false;
-        gameWon = false;
-
-        // return cards to dealer
-        returnCardsToDealer();
-
-        // shuffle the deck
-        dealer.shuffle();
-
-        // the deck's cards are dealt among the players - at least 1 per player
-        // if the deck is not divisible evenly by the number of players then dealing stops
-        numUnusedCards = dealer.getDeckSize() % getNumPlayers();
-        while (dealer.getDeckSize() > numUnusedCards){
-            for (Playable player : players){
-                player.addToHand(dealer.dealTopCard());
-            }
-        }
-    }
-
     public void play(){
         // while game is not won
         while (!isGameWon()){
@@ -235,6 +213,28 @@ public class Game {
 
         // increment round number
         roundNumber++;
+    }
+
+    public void playAgain(){
+        // reset round number, roundDraw and gameWon
+        roundNumber = 1;
+        roundDraw = false;
+        gameWon = false;
+
+        // return cards to dealer
+        returnCardsToDealer();
+
+        // shuffle the deck
+        dealer.shuffle();
+
+        // the deck's cards are dealt among the players - at least 1 per player
+        // if the deck is not divisible evenly by the number of players then dealing stops
+        numUnusedCards = dealer.getDeckSize() % getNumPlayers();
+        while (dealer.getDeckSize() > numUnusedCards){
+            for (Playable player : players){
+                player.addToHand(dealer.dealTopCard());
+            }
+        }
     }
 
 

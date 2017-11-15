@@ -5,7 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -17,23 +19,32 @@ import static org.junit.Assert.assertNotNull;
 public class GameTest {
 
     Game game;
-    Game spyGame;
 
     @Before
     public void before(){
         game = Game.getInstance();
-        spyGame = Mockito.spy(game);
     }
 
     @After
     public void tearDown() throws Exception {
-        // reflection - accessing a private method and setting it to accessible then resetting game instance to a new game
-        Field field = Game.class.getDeclaredField("INSTANCE");
-        field.setAccessible(true);
-        field.set(game, new Game());
+        try {
+            // load class
+            Class c = Class.forName("com.example.peter.toptrumps.Game");
+            // get all constructors (whether public or private)
+            Constructor[] constructors = c.getDeclaredConstructors();
+            // suppress access check errors
+            constructors[0].setAccessible(true);
+            // instance
+            Field field = Game.class.getDeclaredField("INSTANCE");
+            field.setAccessible(true);
+            field.set(game, constructors[0].newInstance());
+            field.setAccessible(false);
+        } catch (ClassNotFoundException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Test
+        @Test
     public void startsWithTwoPlayers(){
         game.start("Peter");
         assertEquals(2, game.getNumPlayers());

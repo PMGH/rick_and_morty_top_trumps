@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -53,8 +54,20 @@ public class RulesActivity extends AppCompatActivity {
 
     public void tearDown() throws Exception {
         // reflection - accessing a private method and setting it to accessible then resetting game instance to a new game
-        Field field = Game.class.getDeclaredField("INSTANCE");
-        field.setAccessible(true);
-        field.set(game, new Game());
+        try {
+            //load class
+            Class c = Class.forName("com.example.peter.toptrumps.Game");
+            //get all constructors (whether public or private)
+            Constructor[] constructors = c.getDeclaredConstructors();
+            //suppress access check errors
+            constructors[0].setAccessible(true);
+            //instance no 1
+            Field field = Game.class.getDeclaredField("INSTANCE");
+            field.setAccessible(true);
+            field.set(game, constructors[0].newInstance());
+            field.setAccessible(false);
+        } catch (ClassNotFoundException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 }

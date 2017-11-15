@@ -9,12 +9,13 @@ import java.util.ArrayList;
 public interface Playable {
 
     String getName();
-    Card removeFromHand(Card card);
-    Card addToHand(Card card);
+    ArrayList<Card> getHand();
     int getNumCards();
     Card getTopCard();
-    void addWin();
     Integer getNumWins();
-    ArrayList<Card> getHand();
+
+    Card addToHand(Card card);
+    Card removeFromHand(Card card);
+    void addWin();
 
 }
