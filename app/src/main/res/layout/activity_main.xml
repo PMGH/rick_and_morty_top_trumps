@@ -27,48 +27,57 @@
         android:layout_width="99dp"
         android:layout_height="92dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="80dp"
         android:contentDescription="@string/cpu_user_image_content_description"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cpu" />
+        app:srcCompat="@drawable/cpu"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:id="@+id/CPU_user_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/darker_gray"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/CPU_user_wins_text"
-        app:layout_constraintLeft_toRightOf="@+id/CPU_user_image"
+        app:layout_constraintRight_toLeftOf="@+id/CPU_user_image"
+        app:layout_constraintTop_toTopOf="@+id/CPU_user_image"
         tools:text="CPU user name" />
 
     <TextView
         android:id="@+id/CPU_user_wins_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/CPU_user_num_cards_text"
-        app:layout_constraintLeft_toRightOf="@+id/CPU_user_image"
-        tools:text="CPU game wins" />
+        tools:text="CPU game wins"
+        app:layout_constraintRight_toLeftOf="@+id/CPU_user_image"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/CPU_user_name_text"
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:id="@+id/CPU_user_num_cards_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/CPU_user_image"
-        app:layout_constraintLeft_toRightOf="@+id/CPU_user_image"
-        tools:text="CPU number of cards" />
+        tools:text="CPU number of cards"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/CPU_user_image"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/CPU_user_wins_text" />
 
     <Button
         android:id="@+id/play_round_btn"
@@ -144,25 +153,27 @@
         android:id="@+id/user_image"
         android:layout_width="82dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/user_image_content_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:srcCompat="@drawable/rick" />
+        app:srcCompat="@drawable/rick"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:id="@+id/user_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="6dp"
         android:layout_marginStart="8dp"
         android:textColor="@android:color/darker_gray"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/user_wins_text"
         app:layout_constraintLeft_toRightOf="@+id/user_image"
-        tools:text="User name" />
+        tools:text="User name"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/user_wins_text"

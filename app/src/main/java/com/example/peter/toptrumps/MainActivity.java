@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
         userNameText.setText(player.getName());
 
         userWinsText = (TextView) findViewById(R.id.user_wins_text);
-        String userWinsStr = "Game Wins: " + player.getNumWins().toString();
+        String userWinsStr = "Game Wins:  " + player.getNumWins().toString();
         userWinsText.setText(userWinsStr);
 
         userNumCardsText = (TextView) findViewById(R.id.user_num_cards_text);
         // add column to DB table?
         Integer userNumCards = Integer.valueOf(player.getNumCards());
-        String userNumCardsStr = "Number of Cards: " + userNumCards.toString();
+        String userNumCardsStr = "Number of Cards:  " + userNumCards.toString();
         userNumCardsText.setText(userNumCardsStr);
 
 
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
         cpuNameText.setText(dealer.getName());
 
         cpuWinsText = (TextView) findViewById(R.id.CPU_user_wins_text);
-        String cpuWins = "Game Wins: " + dealer.getNumWins().toString();
+        String cpuWins = "Game Wins:  " + dealer.getNumWins().toString();
         cpuWinsText.setText(cpuWins);
 
         cpuNumCardsText = (TextView) findViewById(R.id.CPU_user_num_cards_text);
         Integer cpuNumCards = Integer.valueOf(dealer.getNumCards());
-        String cpuNumCardsStr = "Number of Cards: " + cpuNumCards.toString();
+        String cpuNumCardsStr = "Number of Cards:  " + cpuNumCards.toString();
         cpuNumCardsText.setText(cpuNumCardsStr);
     }
 
