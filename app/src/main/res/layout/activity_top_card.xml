@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/player_top_card_backplate"
-        android:layout_width="334dp"
-        android:layout_height="450dp"
+        android:layout_width="300dp"
+        android:layout_height="403dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -22,18 +22,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_card_activity_title"
-        app:srcCompat="@drawable/card_background"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="67dp" />
+        app:layout_constraintVertical_bias="0.181"
+        app:srcCompat="@drawable/card_background" />
 
     <TextView
         android:id="@+id/character_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="18dp"
         android:textColor="@color/colorAccent"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_card_activity_title"
@@ -41,11 +40,11 @@
 
     <ImageView
         android:id="@+id/character_image"
-        android:layout_width="307dp"
-        android:layout_height="220dp"
+        android:layout_width="258dp"
+        android:layout_height="179dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
         android:background="#424242"
         android:contentDescription="@string/character_image"
         android:padding="2dp"
@@ -53,14 +52,16 @@
         app:layout_constraintLeft_toLeftOf="@+id/player_top_card_backplate"
         app:layout_constraintRight_toRightOf="@+id/player_top_card_backplate"
         app:layout_constraintTop_toBottomOf="@+id/character_name_text"
-        app:srcCompat="@drawable/rick_and_morty_title" />
+        app:srcCompat="@drawable/rick_and_morty_title"
+        app:layout_constraintHorizontal_bias="0.575"
+        tools:layout_editor_absoluteY="99dp" />
 
     <TextView
         android:id="@+id/intellect_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/intellect_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -83,7 +84,7 @@
         app:layout_constraintTop_toTopOf="@+id/intellect_text"
         tools:text="i / 100"
         app:layout_constraintRight_toLeftOf="@+id/radioGroup"
-        app:layout_constraintHorizontal_bias="0.465" />
+        app:layout_constraintHorizontal_bias="0.86" />
 
     <TextView
         android:id="@+id/lethality_text"
@@ -113,14 +114,14 @@
         app:layout_constraintTop_toTopOf="@+id/lethality_text"
         tools:text="l / 100"
         app:layout_constraintRight_toRightOf="@+id/intellect_value_text"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.882" />
 
     <TextView
         android:id="@+id/morality_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:text="@string/morality_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -134,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="62dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="1dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -143,14 +144,14 @@
         app:layout_constraintTop_toTopOf="@+id/morality_text"
         tools:text="m / 100"
         app:layout_constraintRight_toRightOf="@+id/lethality_value_text"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.893" />
 
     <TextView
         android:id="@+id/howSchwifty_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="15dp"
         android:text="@string/how_schwifty_text"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -164,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-4dp"
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -173,13 +174,13 @@
         app:layout_constraintTop_toTopOf="@+id/howSchwifty_text"
         tools:text="s / 10"
         app:layout_constraintRight_toRightOf="@+id/morality_value_text"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.697" />
 
     <Button
         android:id="@+id/confirm_selection_btn"
-        android:layout_width="234dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="206dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorPrimary"
@@ -191,8 +192,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="536dp"
-        tools:layout_editor_absoluteX="53dp" />
+        tools:layout_editor_absoluteY="457dp"
+        tools:layout_editor_absoluteX="85dp"
+        app:layout_constraintHorizontal_bias="0.504" />
 
     <TextView
         android:id="@+id/top_card_activity_title"
@@ -200,13 +202,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="@string/player_top_card_title_text"
-        android:textSize="30sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
