@@ -1,21 +1,21 @@
 # **Rick and Morty Top Trumps**    
 
-![Image](/top_trumps_readme/images/r_m_splash.png)
-![Image](/top_trumps_readme/images/r_m_rules.png)
-![Image](/top_trumps_readme/images/r_m_main.png)
-![Image](/top_trumps_readme/images/r_m_top_card.png)
-![Image](/top_trumps_readme/images/r_m_result.png)
-![Image](/top_trumps_readme/images/r_m_game_over.png)
+![Image](/top_trumps_readme_images/r_m_splash.png)
+![Image](/top_trumps_readme_images/r_m_rules.png)
+![Image](/top_trumps_readme_images/r_m_main.png)
+![Image](/top_trumps_readme_images/r_m_top_card.png)
+![Image](/top_trumps_readme_images/r_m_result.png)
+![Image](/top_trumps_readme_images/r_m_game_over.png)
 
 ## Project:    
 
 I started the **Rick and Morty Top Trumps** project while at CodeClan in Glasgow. I initially planned on creating a simple card game such as BlackJack or Highest Card but I am a Rick and Morty fan and decided it would be much more fun and challenging to create a game of Top Trumps instead.    
 
-I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), that contained a selection of Rick and Morty Top Trump cards which I used for the character card statistics. The original post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
+I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), which contained a selection of Rick and Morty Top Trump cards that I used for the character card statistics. The original post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
 
 ### *MVP:*    
 
-##Card game**    
+**Card game**    
 
 *Goal: Create a card game in Android.*
 
@@ -25,7 +25,7 @@ The game does not need to have much or any interaction. The aim is to display th
   - Player 2: 3 of Clubs, 2 of Hearts
   - Player 1 Wins!
 
-Project Extensions:    
+**Project Extensions:**    
 
   * Possibly add another card game
   * Improve the UI    
