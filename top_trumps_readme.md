@@ -7,16 +7,22 @@
 ![Image](/top_trumps_readme/images/r_m_result.png)
 ![Image](/top_trumps_readme/images/r_m_game_over.png)
 
-## Origins:    
+## Project:    
 
 I started the Rick and Morty Top Trumps project while at CodeClan in Glasgow. I initially planned on creating a simple card game such as BlackJack or Highest Card but I am a Rick and Morty fan and decided it would be much more fun and challenging to create a game of Top Trumps instead.    
 
 I was lucky enough to stumble across a post on Reddit, by user 3schmeckles, that contained a selection of Rick and Morty Top Trump cards which I used for the character card statistics. The original post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
 
-I created the game using Object Oriented Programming, with the game logic and object classes created using Test Driven Development and Java in Android Studio.    
+### *Planning:*    
 
-### *For those more technically minded:*    
-I decided to try out the Singleton design pattern for the game logic as it made data persistence across the application activities possible. However, I am now aware that in some cases the Singleton design pattern (with the exception of Unity) is generally considered bad practice as it makes the class instance globally accessible, violates the single responsibility principle of SOLID, preserves state throughout the life of the application which also violates testing best practice. I came across some of these issues during testing where previous tests would alter the state of the Game instance, impacting subsequent tests. I struggled to understand what was causing this issue at first due to my novice understanding of Singleton, took a fair bit of time trying to understand the problem and then eventually found a suitable solution; Reflection. For a game this size, Singleton worked for what I needed but in hindsight I would use a database to store the application state instead.    
+The **planning** stage of the project initially involved reviewing the **project spec** to clarify what needed to be done to achieve the MVP. Following this I drew up **class and object diagrams** and an **inheritance diagram** in [Draw.io](https://www.draw.io/) to solidify my thoughts on the classes I would need, the properties they would possess, the methods they would require and the connections they would have to other classes (e.g. inheritance - extensions) and any interfaces they might implement. Next, I created several **wireframes** using [NinjaMock](https://ninjamock.com/account/register) and then wrote **pseudocode** before coding up.    
+
+### *Code Overview:*    
+
+I created the game using **Object Oriented Programming**, with the game logic and object classes created using **Test Driven Development and Java in Android Studio**.    
+
+### *A Little Deeper Into The Guts:*    
+I decided to try out the Singleton design pattern for the game logic as it made data persistence across the application activities possible. However, I am now aware that in some cases the Singleton design pattern (with the exception of Unity) is generally considered bad practice as it makes the class instance globally accessible, violates the single responsibility principle of SOLID, preserves state throughout the life of the application which also violates testing best practice. I came across some of these issues during testing where previous tests would alter the state of the Game instance, impacting subsequent tests. I struggled to understand what was causing this issue at first due to my novice understanding of Singleton, took a fair bit of time trying to understand the problem and then eventually found a suitable solution; Reflection. For a game this size, Singleton worked for what I needed but in hindsight I would use a database to store the application state instead.      
 
 ## Getting Started    
 
