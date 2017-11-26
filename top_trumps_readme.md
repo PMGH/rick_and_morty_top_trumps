@@ -13,11 +13,13 @@ I started the **Rick and Morty Top Trumps** project while at CodeClan in Glasgow
 
 I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), which contained a selection of Rick and Morty Top Trump cards that I used for the character card statistics. Although I had to do some digging for the character images and catchphrases. The original Reddit post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
 
-### *MVP:*    
+### *Specification:*    
 
 **Card game**    
 
-*Goal: Create a card game in Android.*
+*Goal: Create a card game in Android.*    
+
+*MVP:*    
 
 The game does not need to have much or any interaction. The aim is to display the results of the Java logic already written. For example, if you had two players being dealt two cards each your screen might look something like:    
 
