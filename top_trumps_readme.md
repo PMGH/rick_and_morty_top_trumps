@@ -9,9 +9,9 @@
 
 ## Project:    
 
-I started the **Rick and Morty Top Trumps** project while at CodeClan in Glasgow. I initially planned on creating a simple card game such as BlackJack or Highest Card but I am a Rick and Morty fan and decided it would be much more fun and challenging to create a game of Top Trumps instead.    
+I started the **Rick and Morty Top Trumps** project while at CodeClan in Glasgow. I initially planned on building on a simple card game such as BlackJack or Highest Card that I had already written in order to get practice designing and implementing a User Interface in Android Studio. However, I am a Rick and Morty fan and decided it would be much more fun and challenging to create a themed game of Top Trumps from scratch instead.    
 
-I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), which contained a selection of Rick and Morty Top Trump cards that I used for the character card statistics. The original post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
+I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), which contained a selection of Rick and Morty Top Trump cards that I used for the character card statistics. Although I had to do some digging for the character images and catchphrases. The original Reddit post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
 
 ### *MVP:*    
 
