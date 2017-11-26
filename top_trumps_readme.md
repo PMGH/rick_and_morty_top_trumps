@@ -13,6 +13,23 @@ I started the **Rick and Morty Top Trumps** project while at CodeClan in Glasgow
 
 I was lucky enough to stumble across a post on Reddit, by user 3schmeckles (thank you!), that contained a selection of Rick and Morty Top Trump cards which I used for the character card statistics. The original post can be found here: [Reddit: Rick and Morty Top Trumps](https://redd.it/3zl2l5).    
 
+### *MVP:*    
+
+##Card game**    
+
+*Goal: Create a card game in Android.*
+
+The game does not need to have much or any interaction. The aim is to display the results of the Java logic already written. For example, if you had two players being dealt two cards each your screen might look something like:    
+
+  - Player 1: Ace of Hearts, 9 of Diamonds
+  - Player 2: 3 of Clubs, 2 of Hearts
+  - Player 1 Wins!
+
+Project Extensions:    
+
+  * Possibly add another card game
+  * Improve the UI    
+
 ### *Planning:*    
 
 The planning stage of the project initially involved reviewing the **project spec** to clarify what needed to be done to achieve the MVP. Following this I drew up **class and object diagrams** and an **inheritance diagram** in [Draw.io](https://www.draw.io/) to solidify my thoughts on the classes I would need, the properties they would possess, the methods they would require and the connections they would have to other classes (e.g. inheritance - extensions) and any interfaces they might implement. Next, for **user experience considerations** and as a blueprint to follow I created several **wireframes** using [NinjaMock](https://ninjamock.com/account/register) and then wrote **pseudocode** before coding up.    
