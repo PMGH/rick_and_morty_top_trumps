@@ -1,4 +1,4 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Objects;
 
 /**
  * Created by Peter on 10/11/2017.

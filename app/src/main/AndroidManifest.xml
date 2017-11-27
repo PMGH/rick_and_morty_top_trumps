@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".Activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RulesActivity" />
+        <activity android:name=".Activities.RulesActivity" />
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".RulesActivity" />
+            android:name=".Activities.MainActivity"
+            android:parentActivityName=".Activities.RulesActivity" />
         <activity
-            android:name=".TopCardActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".GameWonActivity" />
+            android:name=".Activities.TopCardActivity"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity android:name=".Activities.ResultActivity" />
+        <activity android:name=".Activities.GameWonActivity" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:background="@drawable/rick_and_morty_game_over"
     android:backgroundTint="#af0f0f0f"
     android:backgroundTintMode="src_over"
-    tools:context="com.example.peter.toptrumps.GameWonActivity">
+    tools:context="com.example.peter.toptrumps.Activities.GameWonActivity">
 
     <TextView
         android:id="@+id/game_result_text"

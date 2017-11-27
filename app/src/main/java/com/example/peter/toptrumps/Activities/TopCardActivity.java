@@ -1,14 +1,17 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.peter.toptrumps.Game;
+import com.example.peter.toptrumps.Objects.Card;
+import com.example.peter.toptrumps.R;
 
 public class TopCardActivity extends AppCompatActivity {
 

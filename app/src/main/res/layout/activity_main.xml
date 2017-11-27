@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rick_and_morty_bg_2"
-    tools:context="com.example.peter.toptrumps.MainActivity">
+    tools:context="com.example.peter.toptrumps.Activities.MainActivity">
 
     <TextView
         android:id="@+id/round_number_text"

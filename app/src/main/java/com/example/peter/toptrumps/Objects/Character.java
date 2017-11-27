@@ -1,4 +1,6 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Objects;
+
+import com.example.peter.toptrumps.R;
 
 /**
  * Created by Peter on 10/11/2017.

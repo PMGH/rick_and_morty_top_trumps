@@ -1,5 +1,9 @@
 package com.example.peter.toptrumps;
 
+import com.example.peter.toptrumps.Objects.Card;
+import com.example.peter.toptrumps.Objects.Deck;
+import com.example.peter.toptrumps.Objects.Player;
+
 import org.junit.Before;
 import org.junit.Test;
 

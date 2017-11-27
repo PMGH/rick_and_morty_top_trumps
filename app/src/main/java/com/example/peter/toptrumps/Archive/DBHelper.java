@@ -9,14 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.peter.toptrumps.Playable;
-import com.example.peter.toptrumps.Player;
+import com.example.peter.toptrumps.Interfaces.Playable;
+import com.example.peter.toptrumps.Objects.Player;
 
 import java.util.ArrayList;
-
-import static android.R.attr.content;
-import static android.R.attr.id;
-import static android.R.attr.priority;
 
 /**
  * Created by Peter on 12/11/2017.

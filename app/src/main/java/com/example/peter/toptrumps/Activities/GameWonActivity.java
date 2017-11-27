@@ -1,14 +1,14 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.peter.toptrumps.Game;
+import com.example.peter.toptrumps.Interfaces.Playable;
+import com.example.peter.toptrumps.R;
 
 import static com.example.peter.toptrumps.R.id.game_result_text;
 

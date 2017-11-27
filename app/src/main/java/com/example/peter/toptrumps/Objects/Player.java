@@ -1,4 +1,7 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Objects;
+
+import com.example.peter.toptrumps.Interfaces.Playable;
+import com.example.peter.toptrumps.Objects.Card;
 
 import java.util.ArrayList;
 

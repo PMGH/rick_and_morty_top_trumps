@@ -1,13 +1,13 @@
 package com.example.peter.toptrumps;
 
+import com.example.peter.toptrumps.Objects.Card;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

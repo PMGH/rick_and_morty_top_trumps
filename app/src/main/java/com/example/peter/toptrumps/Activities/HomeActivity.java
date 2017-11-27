@@ -1,9 +1,11 @@
-package com.example.peter.toptrumps;
+package com.example.peter.toptrumps.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.peter.toptrumps.R;
 
 public class HomeActivity extends AppCompatActivity {
 
